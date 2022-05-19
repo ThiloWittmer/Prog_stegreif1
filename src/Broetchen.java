@@ -15,7 +15,7 @@ public class Broetchen extends Zutaten {
 			broetchenName = "Hamburger Sesam";
 			backzeit = 90;
 		case 34: 
-			broetchenName = "Vegan-Brötchen";
+			broetchenName = "Vegan-Brï¿½tchen";
 			backzeit = 240;
 		case 41: 
 			broetchenName = "Ciabatta";
@@ -24,6 +24,7 @@ public class Broetchen extends Zutaten {
 	}
 	
 	public int zubereiten() {
+		System.out.println(broetchenName + " " + (float) backzeit/60 + " Minuten roesten und aufschneiden");
 		return backzeit;
 	}
 }
