@@ -1,26 +1,54 @@
 public class Bratling extends Zutaten {
     private float bratzeit;
     private int hoehe;
-    private String bratlingName;
 
-    public Bratling(hoehe){
-        this.hoehe = hoehe;
-		switch(hoehe) {
-		case 25: 
-			bratlingName = "Rindfleisch (Original)";
-			bratzeit = 4.5;
-		case 11: 
-			bratlingName = "Haendchenfleisch gegrillt";
-			bratzeit = 3.0;
+    public Bratling(int nummer){
+        this.nummer = nummer;
+		switch(nummer) {
+		case 20: 
+			name = "Rindfleisch (Original)";
+			preis = (float) 1.85;
+			klassisch = true;
+			vegetarisch = false;
+			vegan = false;
 		case 21: 
-			bratlingName = "Falafel-Bratling";
-			bratzeit = 3.5;
-		case 25: 
-			bratlingName = "Gemuese-Bratling";
-			bratzeit = 240;
+			name = "Haendchenfleisch gegrillt";
+			preis = (float) 1.15;
+			klassisch = true;
+			vegetarisch = false;
+			vegan = false;
+		case 22: 
+			name = "Falafel-Bratling";
+			preis = (float) 1.45;
+			klassisch = false;
+			vegetarisch = false;
+			vegan = true;
+		case 23: 
+			name = "Gemuese-Bratling";
+			preis = (float) 1.75;
+			klassisch = false;
+			vegetarisch = true;
+			vegan = false;
 		}
     }
     
     public int zubereiten() {
-		System.out.println(broetchenName + " " + (float) backzeit/60 + " Minuten roesten und aufschneiden");
+		System.out.println(name
+ + " von jeder Seite " + (int) bratzeit/2 + " Minuten und " + ((bratzeit % 1)/2)*60 + " Sekunden grillen.");
+		return (int) bratzeit*60;
+	}
+
+	public float berechneHoehe() {
+		float h;
+		h = hoehe - (bratzeit * (hoehe * (float) 0.035));
+		return h;
+	}
+
+	public float getBratzeit() {
+		return bratzeit;
+	}
+
+	public int getHoehe() {
+		return hoehe;
+	}
 }
