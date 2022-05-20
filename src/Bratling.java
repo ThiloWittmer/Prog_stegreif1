@@ -17,11 +17,10 @@ public class Bratling extends Zutaten {
 			bratzeit = 3.5;
 		case 25: 
 			bratlingName = "Gemuese-Bratling";
-			bratzeit = 4.0;
+			bratzeit = 240;
 		}
     }
     
-    public float zubereiten() {
-        System.out.println(bratlingName + " von jeder Seite " bratzeit + " Minuten grillen.");
-    }
+    public int zubereiten() {
+		System.out.println(broetchenName + " " + (float) backzeit/60 + " Minuten roesten und aufschneiden");
 }
