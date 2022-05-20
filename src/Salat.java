@@ -20,6 +20,6 @@ public class Salat extends Zutaten {
     }
 
     public float berechneHoehe() {
-        return (float) 0.0;
+        return 0;
     }
 }
