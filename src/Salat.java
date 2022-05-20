@@ -1,14 +1,15 @@
 public class Salat extends Zutaten {
     public Salat(int nummer){
         this.nummer = nummer;
-        klassisch = false;
         vegetarisch = false;
         vegan = true;
         switch(nummer){
             case 30:
+            klassisch = true;
                 name = "Eisbergsalat";
                 preis = (float) 0.18;
             case 31:
+            klassisch = false;
                 name = "Rucolasalat";
                 preis = (float) 0.25;
         }

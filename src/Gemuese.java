@@ -7,7 +7,7 @@ public class Gemuese extends Zutaten {
 		case 40: 
 			name = "Tomate";
 			preis = (float) 0.25;
-			klassisch = false;
+			klassisch = true;
 			vegetarisch = false;
 			vegan = true;
             scheibenDicke = 3;
@@ -15,7 +15,7 @@ public class Gemuese extends Zutaten {
 		case 41: 
 			name = "Salzgurke";
 			preis = (float) 0.15;
-			klassisch = false;
+			klassisch = true;
 			vegetarisch = false;
 			vegan = true;
             scheibenDicke = 2;

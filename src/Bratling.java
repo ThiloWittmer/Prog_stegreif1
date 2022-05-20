@@ -16,7 +16,7 @@ public class Bratling extends Zutaten {
 		case 21: 
 			name = "Haendchenfleisch gegrillt";
 			preis = (float) 1.15;
-			klassisch = true;
+			klassisch = false;
 			vegetarisch = false;
 			vegan = false;
 			hoehe = 11;

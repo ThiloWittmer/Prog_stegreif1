@@ -8,7 +8,7 @@ public class Sauce extends Zutaten {
 		case 50: 
 			name = "Ketchup";
 			preis = (float) 0.1;
-			klassisch = false;
+			klassisch = true;
 			vegetarisch = false;
 			vegan = true;
             menge = 5;
@@ -16,7 +16,7 @@ public class Sauce extends Zutaten {
 		case 51: 
 			name = "Sandwich-Sauce";
 			preis = (float) 0.15;
-			klassisch = false;
+			klassisch = true;
 			vegetarisch = true;
 			vegan = false;
             menge = 10;

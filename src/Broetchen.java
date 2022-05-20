@@ -8,7 +8,7 @@ public class Broetchen extends Zutaten {
 		case 10: 
 			name = "Hamburger (Standard)";
 			preis = (float) 0.85;
-			klassisch = false;
+			klassisch = true;
 			vegetarisch = true;
 			vegan = false;
 			backzeit = 90;
@@ -16,7 +16,7 @@ public class Broetchen extends Zutaten {
 		case 11: 
 			name = "Hamburger Sesam";
 			preis = (float) 0.95;
-			klassisch = false;
+			klassisch = true;
 			vegetarisch = true;
 			vegan = false;
 			backzeit = 90;
