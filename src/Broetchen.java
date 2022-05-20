@@ -1,6 +1,6 @@
 
 public class Broetchen extends Zutaten {
-	private int backzeit;
+	private float backzeit;
 	private int hoehe;
 	private String broetchenName;
 	
@@ -10,20 +10,28 @@ public class Broetchen extends Zutaten {
 		switch(hoehe) {
 		case 27: 
 			broetchenName = "Hamburger (Standard)";
-			backzeit = 90;
+			backzeit = 1.5;
 		case 28: 
 			broetchenName = "Hamburger Sesam";
-			backzeit = 90;
+			backzeit = 1.5;
 		case 34: 
-			broetchenName = "Vegan-Brötchen";
-			backzeit = 240;
+			broetchenName = "Vegan-Brï¿½tchen";
+			backzeit = 4.0;
 		case 41: 
 			broetchenName = "Ciabatta";
-			backzeit = 330;
+			backzeit = 5.5;
 		}
 	}
 	
-	public int zubereiten() {
+	public float zubereiten() {
+		System.out.println(broetchenName + " " + backzeit + " Minuten rÃ¶sten und schneiden.");
 		return backzeit;
 	}
+
+	public float berechenHoehe() {
+		float h;
+		h = backzeit * (hoehe * 0,025) + hoehe;
+		return h;
+	}
+	
 }
