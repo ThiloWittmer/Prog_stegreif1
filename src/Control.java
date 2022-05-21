@@ -7,6 +7,8 @@ public class Control {
 		
 		//test kommentar 
 		// tst 
+		
+		int i = 0;
 		//test
 	}
 
