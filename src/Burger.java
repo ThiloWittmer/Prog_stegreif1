@@ -5,11 +5,15 @@
 •	Int: anzahlZutaten 
 
 Methoden:
+
+	//Aaron
 •	Float: berechnePreis()
 •	Float: berechneHoehe()
 •	Boolean: istVegan()
 •	Boolean: istVegetarisch()
 •	Boolean: istMitFleisch()
+
+	//Mohamad
 •	String: geschmack() [abhängig von Sauce]
 •	Boolean: klassisch()
 •	Int: zeitBerechnen()
