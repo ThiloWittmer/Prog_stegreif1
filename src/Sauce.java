@@ -55,5 +55,12 @@ public class Sauce extends Zutaten {
 
     public String getGeschmack() {
         return geschmack;
+    }
+
+    //TODO um Standardwerte ergaenzen
+    public String toString() {
+        return "Sauce [geschmack=" + geschmack + ", menge=" + menge + "]";
     } 
+
+    
 }

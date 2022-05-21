@@ -47,7 +47,7 @@ public class Bratling extends Zutaten {
 
 	public float berechneHoehe() {
 		float h;
-		h = hoehe - (bratzeit * (hoehe * (float) 0.035));
+		h = hoehe - ((float) bratzeit/60 * (hoehe * (float) 0.035));
 		return h;
 	}
 
