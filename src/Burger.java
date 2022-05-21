@@ -26,6 +26,4 @@ public class Burger {
 	private String name;
 	private Zutaten[] zutaten = new Zutaten[9];
 	private int anzahlZutaten;
-
-
 }
