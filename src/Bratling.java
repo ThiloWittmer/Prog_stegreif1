@@ -58,4 +58,8 @@ public class Bratling extends Zutaten {
 	public int getHoehe() {
 		return hoehe;
 	}
+
+	public int getPreis(){
+		return preis;
+	}
 }
