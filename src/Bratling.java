@@ -62,7 +62,7 @@ public class Bratling extends Zutaten {
 		return hoehe;
 	}
 
-	public int getPreis(){
+	public float getPreis(){
 		return preis;
 	}
 }
