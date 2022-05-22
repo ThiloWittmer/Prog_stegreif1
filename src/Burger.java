@@ -54,33 +54,27 @@ public class Burger{
 	}
 
 	public boolean istVegan(){
-		boolean istVegan = false;
-		for (Zutaten aktZutat : zutaten) {
-			if(aktZutat.vegan = true){
-				istVegan = true;
+			for (Zutaten aktZutate : zutaten) {
+				if(!aktZutate.istVegan()){
+					return false;
 				}
-			}
-			return istVegan;
+			}return true;
 		}
 
 	public boolean istVegetarisch(){
-		boolean istVegetarisch = false;
 		for (Zutaten aktZutat : zutaten) {
-			if(aktZutat.vegan = true){
-				istVegetarisch = true;
+			if(!aktZutat.istVegetarisch()){
+				return false;
 			}
-		}
-		return istVegetarisch;
+		}return true;
 		}
 
 	public boolean mitFleisch(){
-		boolean istKlassisch = false;
-		for (Zutaten aktZutat : zutaten) {
-			if(aktZutat.klassisch == true){
-				istKlassisch = true;
+		for (Zutaten aktZutat : zutaten){
+			if(!aktZutat.istKlassisch()){
+				return false;
 			}
-		}
-		return istKlassisch;
+		}return true;
 	}
 
 }
