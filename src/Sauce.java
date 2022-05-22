@@ -9,7 +9,7 @@ public class Sauce extends Zutaten {
 			name = "Ketchup";
 			preis = (float) 0.1;
 			klassisch = true;
-			vegetarisch = false;
+			vegetarisch = true;
 			vegan = true;
             menge = 5;
             geschmack = "normal";
@@ -27,7 +27,7 @@ public class Sauce extends Zutaten {
 			name = "Chili-Sauce";
 			preis = (float) 0.25;
 			klassisch = false;
-			vegetarisch = false;
+			vegetarisch = true;
 			vegan = true;
             menge = 8;
             geschmack = "scharf";
@@ -44,7 +44,7 @@ public class Sauce extends Zutaten {
     }
 
     public int zubereiten() {
-        System.out.print(name + " wird geschuettelt");
+        System.out.println(name + " wird geschuettelt");
         return 0;
     }
 

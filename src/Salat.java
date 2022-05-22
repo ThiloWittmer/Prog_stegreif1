@@ -1,7 +1,7 @@
 public class Salat extends Zutaten {
     public Salat(int nummer){
         this.nummer = nummer;
-        vegetarisch = false;
+        vegetarisch = true;
         vegan = true;
         switch(nummer){
             case 30:
@@ -17,7 +17,7 @@ public class Salat extends Zutaten {
     }
 
     public int zubereiten(){
-        System.out.print(name + " wird gewaschen und geschleudert");
+        System.out.println(name + " wird gewaschen und geschleudert");
         return 0;
     }
 

@@ -27,7 +27,7 @@ public class Broetchen extends Zutaten {
 			name = "Vegan-Broetchen";
 			preis = (float) 0.55;
 			klassisch = false;
-			vegetarisch = false;
+			vegetarisch = true;
 			vegan = true;
 			backzeit = 240;
 			hoehe = 34;
@@ -44,7 +44,7 @@ public class Broetchen extends Zutaten {
 	}
 	
 	public int zubereiten() {
-		System.out.print(name + " " + (float) backzeit/60 + " Minuten roesten und schneiden.");
+		System.out.println(name + " " + (float) backzeit/60 + " Minuten roesten und schneiden.");
 		return backzeit;
 	}
 

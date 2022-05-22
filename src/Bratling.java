@@ -27,7 +27,7 @@ public class Bratling extends Zutaten {
 			name = "Falafel-Bratling";
 			preis = (float) 1.45;
 			klassisch = false;
-			vegetarisch = false;
+			vegetarisch = true;
 			vegan = true;
 			hoehe = 21;
 			bratzeit = 210;
@@ -44,7 +44,7 @@ public class Bratling extends Zutaten {
     }
     
     public int zubereiten() {
-		System.out.print(name + " von jeder Seite " + bratzeit/60/2 + " Minuten und " + ((bratzeit % 60)/2) + " Sekunden grillen.");
+		System.out.println(name + " von jeder Seite " + bratzeit/60/2 + " Minuten und " + ((bratzeit % 60)/2) + " Sekunden grillen.");
 		return  bratzeit;
 	}
 
