@@ -13,6 +13,7 @@ public class Bratling extends Zutaten {
 			vegan = false;
 			hoehe = 25;
 			bratzeit = 270;
+			break;
 		case 21: 
 			name = "Haendchenfleisch gegrillt";
 			preis = (float) 1.15;
@@ -21,6 +22,7 @@ public class Bratling extends Zutaten {
 			vegan = false;
 			hoehe = 11;
 			bratzeit = 180;
+			break;
 		case 22: 
 			name = "Falafel-Bratling";
 			preis = (float) 1.45;
@@ -29,6 +31,7 @@ public class Bratling extends Zutaten {
 			vegan = true;
 			hoehe = 21;
 			bratzeit = 210;
+			break;
 		case 23: 
 			name = "Gemuese-Bratling";
 			preis = (float) 1.75;
@@ -59,7 +62,7 @@ public class Bratling extends Zutaten {
 		return hoehe;
 	}
 
-	public int getPreis(){
+	public float getPreis(){
 		return preis;
 	}
 }

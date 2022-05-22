@@ -13,6 +13,7 @@ public class Sauce extends Zutaten {
 			vegan = true;
             menge = 5;
             geschmack = "normal";
+            break;
 		case 51: 
 			name = "Sandwich-Sauce";
 			preis = (float) 0.15;
@@ -21,6 +22,7 @@ public class Sauce extends Zutaten {
 			vegan = false;
             menge = 10;
             geschmack = "normal";
+            break;
 		case 52: 
 			name = "Chili-Sauce";
 			preis = (float) 0.25;
@@ -29,6 +31,7 @@ public class Sauce extends Zutaten {
 			vegan = true;
             menge = 8;
             geschmack = "scharf";
+            break;
 		case 53: 
 			name = "Honig-Senf-Sauce";
 			preis = (float) 0.18;
@@ -57,10 +60,14 @@ public class Sauce extends Zutaten {
         return geschmack;
     }
 
-    //TODO um Standardwerte ergaenzen
     public String toString() {
-        return "Sauce [geschmack=" + geschmack + ", menge=" + menge + "]";
-    } 
-
-    
+		return "No." + nummer + "\t" + name + " - Preis = " + preis + " Euro\t" + print(klassisch, "Klassisch")
+				+ print(vegan, "Vegan") + print(vegetarisch, "Vegetarisch") + " (" + geschmack + ")";
+	}
+	private String print(boolean b, String s) {
+		if(b) {
+			return " - " + s;
+		}
+		return "";
+	}
 }

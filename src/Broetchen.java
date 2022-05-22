@@ -13,6 +13,7 @@ public class Broetchen extends Zutaten {
 			vegan = false;
 			backzeit = 90;
 			hoehe = 27;
+			break;
 		case 11: 
 			name = "Hamburger Sesam";
 			preis = (float) 0.95;
@@ -21,6 +22,7 @@ public class Broetchen extends Zutaten {
 			vegan = false;
 			backzeit = 90;
 			hoehe = 28;
+			break;
 		case 12: 
 			name = "Vegan-Broetchen";
 			preis = (float) 0.55;
@@ -29,6 +31,7 @@ public class Broetchen extends Zutaten {
 			vegan = true;
 			backzeit = 240;
 			hoehe = 34;
+			break;
 		case 13: 
 			name = "Ciabatta";
 			preis = (float) 0.45;

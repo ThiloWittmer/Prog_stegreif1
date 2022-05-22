@@ -8,6 +8,7 @@ public class Salat extends Zutaten {
             klassisch = true;
                 name = "Eisbergsalat";
                 preis = (float) 0.18;
+                break;
             case 31:
             klassisch = false;
                 name = "Rucolasalat";
