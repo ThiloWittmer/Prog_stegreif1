@@ -26,11 +26,55 @@ Methoden:
 
  */
 
-public class Burger {
+public class Burger{
 	private String name;
 	private Zutaten[] zutaten = new Zutaten[9];
 	private int anzahlZutaten;
 	private Zutatenliste z = new Zutatenliste();
 
+
+	public Burger(String name){
+		this.name = name;
+	}
+
+	public float berechnePreis(){
+		float preis = 0.0f;
+		for (Zutaten aktZutat : zutaten) {
+			preis += aktZutat.getPreis();
+		}
+		return preis;
+	}
+
+	public float berechneHoehe(){
+		float hoehe = 0.0f;
+		for (Zutaten aktZutat : zutaten) {
+			hoehe += aktZutat.berechneHoehe();
+		}
+		return hoehe;
+	}
+
+	public boolean istVegan(){
+			for (Zutaten aktZutate : zutaten) {
+				if(!aktZutate.istVegan()){
+					return false;
+				}
+			}return true;
+		}
+
+	public boolean istVegetarisch(){
+		for (Zutaten aktZutat : zutaten) {
+			if(!aktZutat.istVegetarisch()){
+				return false;
+			}
+		}return true;
+		}
+
+	public boolean mitFleisch(){
+		for (Zutaten aktZutat : zutaten){
+			if(!aktZutat.istKlassisch()){
+				return false;
+			}
+		}return true;
+	}
 
 }
