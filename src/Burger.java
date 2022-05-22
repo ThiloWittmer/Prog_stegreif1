@@ -34,3 +34,12 @@ public class Burger {
 
 
 }
+
+public static float berechnePreis(Zutaten[] array){
+	float preis;
+	
+	for(int i = 0; i <= array.length; i++){
+		preis += array[i].getPreis();
+	}
+	return preis;
+}
