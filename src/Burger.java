@@ -31,6 +31,8 @@ public class Burger{
 	private Zutaten[] zutaten = new Zutaten[9];
 	private int anzahlZutaten;
 	private Zutatenliste z = new Zutatenliste();
+	private boolean mitBroetchen= false;
+	private String geschmack;
 
 
 	public Burger(String name){
@@ -77,4 +79,56 @@ public class Burger{
 		}return true;
 	}
 
-}
+	public String Geschmack() {
+		String geschmacksrichtung = "";
+		for(Zutaten aktZutat : zutaten) {
+			if(aktZutat.getNummer()>=50) {
+				geschmacksrichtung += "- " + aktZutat.getGeschmack() + " ";
+			}
+		}			
+		return geschmacksrichtung;
+	}
+	
+	
+	public boolean klassisch() {		
+		for(Zutaten aktZutat : zutaten) {
+			if(!aktZutat.istKlassisch()) {
+				return false;
+			}
+		}	
+		return true;
+	}
+			
+	public int zeitBerechnen()  {
+		int zeit=0;
+		for(Zutaten aktZutat : zutaten) {
+			zeit+= aktZutat.zubereiten();		
+		}
+		return zeit;
+	}
+	
+	public String toString() {
+		String ausgabe= name + ": ";		
+		for(Zutaten aktZutat : zutaten) {
+			ausgabe+= "- " + aktZutat.getName() + " ";
+		}
+		return ausgabe;
+	}
+	
+
+	public void zutatHinzufuegen(int nummer) {
+		switch(nummer) {
+		case 10, 11, 12, 13:mitBroetchen= true;
+		
+		zutaten[anzahlZutaten]= z.getZutat(nummer);
+		anzahlZutaten++;
+		}			
+	}
+}	
+	
+	
+	
+	
+
+
+
