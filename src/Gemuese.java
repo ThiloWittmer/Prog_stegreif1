@@ -12,6 +12,7 @@ public class Gemuese extends Zutaten {
 			vegan = true;
             scheibenDicke = 3;
             scheibenAnzahl = 3;
+            break;
 		case 41: 
 			name = "Salzgurke";
 			preis = (float) 0.15;
@@ -20,6 +21,7 @@ public class Gemuese extends Zutaten {
 			vegan = true;
             scheibenDicke = 2;
             scheibenAnzahl = 4;
+            break;
 		case 42: 
 			name = "Rote Zwiebelringe";
 			preis = (float) 0.08;
@@ -28,6 +30,7 @@ public class Gemuese extends Zutaten {
 			vegan = true;
             scheibenDicke = 2;
             scheibenAnzahl = 5;
+            break;
 		case 43: 
 			name = "Jalapeno-Ringe";
 			preis = (float) 0.08;
