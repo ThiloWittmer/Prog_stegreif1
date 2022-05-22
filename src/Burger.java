@@ -33,40 +33,54 @@ public class Burger{
 	private Zutatenliste z = new Zutatenliste();
 
 
-}
-
-public Burger(String name, Zutatenliste zutat, int anzahlZutaten,int nummer){
-this.name = name;
-this.zutat = z.getZutat(nummer);
-this.anzahlZutaten = anzahlZutaten;
-}
-
-public static float berechnePreis(Zutaten[] array){
-	float preis;
-	
-	for(int i = 0; i <= array.length; i++){
-		preis += array[i].getPreis();
+	public Burger(String name){
+		this.name = name;
 	}
-	return preis;
-}
 
-public float berechneHoehe(Zutaten[] array){
-	float hoehe;
-	for(int i = 0; i <= array.length; i++){
-		hoehe = Bratling.berechneHoehe() + Broetchen.berechneHoehe() + Gemuese.berechneHoehe(); 
+	public float berechnePreis(){
+		float preis = 0.0f;
+		for (Zutaten aktZutat : zutaten) {
+			preis += aktZutat.getPreis();
+		}
+		return preis;
 	}
-	return hoehe;
+
+	public float berechneHoehe(){
+		float hoehe = 0.0f;
+		for (Zutaten aktZutat : zutaten) {
+			hoehe += aktZutat.berechneHoehe();
+		}
+		return hoehe;
+	}
+
+	public boolean istVegan(){
+		boolean istVegan = false;
+		for (Zutaten aktZutat : zutaten) {
+			if(aktZutat.vegan = true){
+				istVegan = true;
+				}
+			}
+			return istVegan;
+		}
+
+	public boolean istVegetarisch(){
+		boolean istVegetarisch = false;
+		for (Zutaten aktZutat : zutaten) {
+			if(aktZutat.vegan = true){
+				istVegetarisch = true;
+			}
+		}
+		return istVegetarisch;
+		}
+
+	public boolean mitFleisch(){
+		boolean istKlassisch = false;
+		for (Zutaten aktZutat : zutaten) {
+			if(aktZutat.klassisch == true){
+				istKlassisch = true;
+			}
+		}
+		return istKlassisch;
+	}
+
 }
-
-public boolean istVegan(){
-
-}
-
-public boolean istVegetarisch(){
-
-}
-
-public boolean mitFleisch(){
-	
-}
-
