@@ -15,6 +15,7 @@ public abstract class Zutaten {
 		return "No." + nummer + "\t" + name + " - Preis = " + preis + " Euro\t" + print(klassisch, "Klassisch")
 				+ print(vegan, "Vegan") + print(vegetarisch, "Vegetarisch");
 	}
+
 	private String print(boolean b, String s) {
 		if(b) {
 			return " - " + s;
@@ -29,6 +30,9 @@ public abstract class Zutaten {
 	}
 	public float getPreis() {
 		return preis;
+	}
+	public String getGeschmack(){
+		return "";
 	}
 	public boolean istKlassisch() {
 		return klassisch;
