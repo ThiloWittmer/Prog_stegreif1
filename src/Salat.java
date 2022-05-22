@@ -17,7 +17,7 @@ public class Salat extends Zutaten {
     }
 
     public int zubereiten(){
-        System.out.println(name + " wird gewaschen und geschleudert");
+        System.out.print(name + " wird gewaschen und geschleudert");
         return 0;
     }
 

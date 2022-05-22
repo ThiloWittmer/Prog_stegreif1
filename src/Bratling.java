@@ -44,7 +44,7 @@ public class Bratling extends Zutaten {
     }
     
     public int zubereiten() {
-		System.out.println(name + " von jeder Seite " + bratzeit/60/2 + " Minuten und " + ((bratzeit % 60)/2) + " Sekunden grillen.");
+		System.out.print(name + " von jeder Seite " + bratzeit/60/2 + " Minuten und " + ((bratzeit % 60)/2) + " Sekunden grillen.");
 		return  bratzeit;
 	}
 

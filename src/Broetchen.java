@@ -44,7 +44,7 @@ public class Broetchen extends Zutaten {
 	}
 	
 	public int zubereiten() {
-		System.out.println(name + " " + (float) backzeit/60 + " Minuten roesten und schneiden.");
+		System.out.print(name + " " + (float) backzeit/60 + " Minuten roesten und schneiden.");
 		return backzeit;
 	}
 

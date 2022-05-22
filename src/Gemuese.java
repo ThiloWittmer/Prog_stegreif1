@@ -43,7 +43,7 @@ public class Gemuese extends Zutaten {
     }
 
     public int zubereiten() {
-        System.out.println(name + " wird gewaschen");
+        System.out.print(name + " wird gewaschen");
         for(int i=1; i <= scheibenAnzahl; i++){
             System.out.println(i + ". Scheibe mit " + scheibenDicke + "mm schneiden");
         }

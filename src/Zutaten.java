@@ -12,11 +12,11 @@ public abstract class Zutaten {
 	
 	
 	public String toString() {
-		return "No." + nummer + "\t" + name + " - Preis = " + preis + " Euro\t" + print(klassisch, "Klassisch")
-				+ print(vegan, "Vegan") + print(vegetarisch, "Vegetarisch");
+		return "No." + nummer + "\t" + name + " - Preis = " + preis + " Euro\t" + printBoolean(klassisch, "Klassisch")
+				+ printBoolean(vegan, "Vegan") + printBoolean(vegetarisch, "Vegetarisch");
 	}
 
-	private String print(boolean b, String s) {
+	public static String printBoolean(boolean b, String s) {
 		if(b) {
 			return " - " + s;
 		}

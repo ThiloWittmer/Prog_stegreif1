@@ -44,7 +44,7 @@ public class Sauce extends Zutaten {
     }
 
     public int zubereiten() {
-        System.out.println(name + " wird geschuettelt");
+        System.out.print(name + " wird geschuettelt");
         return 0;
     }
 

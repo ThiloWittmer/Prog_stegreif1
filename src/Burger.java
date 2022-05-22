@@ -89,7 +89,6 @@ public class Burger{
 		return geschmacksrichtung;
 	}
 	
-	
 	public boolean klassisch() {		
 		for(Zutaten aktZutat : zutaten) {
 			if(!aktZutat.istKlassisch()) {
@@ -98,23 +97,14 @@ public class Burger{
 		}	
 		return true;
 	}
-			
-	public int zeitBerechnen()  {
-		int zeit=0;
-		for(Zutaten aktZutat : zutaten) {
-			zeit+= aktZutat.zubereiten();		
-		}
-		return zeit;
-	}
 	
 	public String toString() {
-		String ausgabe= name + ": ";		
+		String ausgabe = "";	
 		for(Zutaten aktZutat : zutaten) {
 			ausgabe+= "- " + aktZutat.getName() + " ";
 		}
 		return ausgabe;
 	}
-	
 
 	public void zutatHinzufuegen(int nummer) {
 		switch(nummer) {
@@ -123,6 +113,40 @@ public class Burger{
 		zutaten[anzahlZutaten]= z.getZutat(nummer);
 		anzahlZutaten++;
 		}			
+	}
+
+	public int printRezept(Burger burger) {
+		int zeit=0;
+		char c = 'a';
+		
+		System.out.println("Rezept - " + name + " (" + Math.round(berechneHoehe())/10 + " cm, " + 
+		Zutaten.printBoolean(istVegetarisch(), "Vegetarisch") + Zutaten.printBoolean(istVegan(), "Vegan") + ") - " + berechnePreis() + " Euro");
+		System.out.println("Zutaten: " + burger.toString());
+		System.out.println();
+		System.out.println("Und so geht`s:");
+		
+		for (int i=0; i < zutaten.length; i++) {
+			System.out.println((c+i) + " - ");
+			zeit += zutaten[i].zubereiten();
+		}
+
+		return zeit;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getAnzahlZutaten() {
+		return anzahlZutaten;
+	}
+
+	public boolean istMitBroetchen() {
+		return mitBroetchen;
+	}
+
+	public String getGeschmack() {
+		return geschmack;
 	}
 }	
 	
