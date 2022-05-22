@@ -26,13 +26,19 @@ Methoden:
 
  */
 
-public class Burger {
+public class Burger{
 	private String name;
 	private Zutaten[] zutaten = new Zutaten[9];
 	private int anzahlZutaten;
 	private Zutatenliste z = new Zutatenliste();
 
 
+}
+
+public Burger(String name, Zutatenliste zutat, int anzahlZutaten,int nummer){
+this.name = name;
+this.zutat = z.getZutat(nummer);
+this.anzahlZutaten = anzahlZutaten;
 }
 
 public static float berechnePreis(Zutaten[] array){
@@ -43,3 +49,24 @@ public static float berechnePreis(Zutaten[] array){
 	}
 	return preis;
 }
+
+public float berechneHoehe(Zutaten[] array){
+	float hoehe;
+	for(int i = 0; i <= array.length; i++){
+		hoehe = Bratling.berechneHoehe() + Broetchen.berechneHoehe() + Gemuese.berechneHoehe(); 
+	}
+	return hoehe;
+}
+
+public boolean istVegan(){
+
+}
+
+public boolean istVegetarisch(){
+
+}
+
+public boolean mitFleisch(){
+	
+}
+
