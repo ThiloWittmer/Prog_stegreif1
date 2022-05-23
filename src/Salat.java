@@ -7,12 +7,12 @@ public class Salat extends Zutaten {
             case 30:
             klassisch = true;
                 name = "Eisbergsalat";
-                preis = (float) 0.18;
+                preis = 0.18f;
                 break;
             case 31:
             klassisch = false;
                 name = "Rucolasalat";
-                preis = (float) 0.25;
+                preis = 0.25f;
         }
     }
 
@@ -22,6 +22,6 @@ public class Salat extends Zutaten {
     }
 
     public float berechneHoehe() {
-        return 0;
+        return 0f;
     }
 }

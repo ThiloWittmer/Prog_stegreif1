@@ -7,7 +7,7 @@ public class Broetchen extends Zutaten {
 		switch(nummer) {
 		case 10: 
 			name = "Hamburger (Standard)";
-			preis = (float) 0.85;
+			preis = 0.85f;
 			klassisch = true;
 			vegetarisch = true;
 			vegan = false;
@@ -16,7 +16,7 @@ public class Broetchen extends Zutaten {
 			break;
 		case 11: 
 			name = "Hamburger Sesam";
-			preis = (float) 0.95;
+			preis = 0.95f;
 			klassisch = true;
 			vegetarisch = true;
 			vegan = false;
@@ -25,7 +25,7 @@ public class Broetchen extends Zutaten {
 			break;
 		case 12: 
 			name = "Vegan-Broetchen";
-			preis = (float) 0.55;
+			preis = 0.55f;
 			klassisch = false;
 			vegetarisch = true;
 			vegan = true;
@@ -34,7 +34,7 @@ public class Broetchen extends Zutaten {
 			break;
 		case 13: 
 			name = "Ciabatta";
-			preis = (float) 0.45;
+			preis = 0.45f;
 			klassisch = false;
 			vegetarisch = true;
 			vegan = false;
@@ -44,13 +44,13 @@ public class Broetchen extends Zutaten {
 	}
 	
 	public int zubereiten() {
-		System.out.println(name + " " + (float) backzeit/60 + " Minuten roesten und schneiden.");
+		System.out.println(name + " " + backzeit/60f + " Minuten roesten und schneiden.");
 		return backzeit;
 	}
 
 	public float berechneHoehe() {
 		float h;
-		h =  (float) backzeit/60 * (hoehe * (float) 0.025) + hoehe;
+		h =  (float) backzeit/60 * (hoehe * 0.025f) + hoehe;
 		return h;
 	}
 

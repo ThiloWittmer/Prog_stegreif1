@@ -30,7 +30,7 @@ public class Burger{
 	private String name;
 	private Zutaten[] zutaten = new Zutaten[9];
 	private int anzahlZutaten;
-	private Zutatenliste z = new Zutatenliste();
+	private ZutatenManager z = new ZutatenManager();
 	private boolean mitBroetchen= false;
 	private String geschmack;
 
@@ -44,7 +44,7 @@ public class Burger{
 		for (int i=0; i < anzahlZutaten; i++) {
 			preis += zutaten[i].getPreis();
 		}
-		preis = (Math.round(preis*100))/100;
+		preis = (Math.round(preis*100))/100f;
 		return preis;
 	}
 

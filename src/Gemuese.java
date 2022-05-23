@@ -8,28 +8,28 @@ public class Gemuese extends Zutaten {
 		switch(nummer) {
 		case 40: 
 			name = "Tomate";
-			preis = (float) 0.25;
+			preis = 0.25f;
 			klassisch = true;
             scheibenDicke = 3;
             scheibenAnzahl = 3;
             break;
 		case 41: 
 			name = "Salzgurke";
-			preis = (float) 0.15;
+			preis = 0.15f;
 			klassisch = true;
             scheibenDicke = 2;
             scheibenAnzahl = 4;
             break;
 		case 42: 
 			name = "Rote Zwiebelringe";
-			preis = (float) 0.08;
+			preis = 0.08f;
 			klassisch = false;
             scheibenDicke = 2;
             scheibenAnzahl = 5;
             break;
 		case 43: 
 			name = "Jalapeno-Ringe";
-			preis = (float) 0.08;
+			preis = 0.08f;
 			klassisch = false;
             scheibenDicke = 2;
             scheibenAnzahl = 5;

@@ -7,7 +7,7 @@ public class Sauce extends Zutaten {
 		switch(nummer) {
 		case 50: 
 			name = "Ketchup";
-			preis = (float) 0.1;
+			preis = 0.1f;
 			klassisch = true;
 			vegetarisch = true;
 			vegan = true;
@@ -16,7 +16,7 @@ public class Sauce extends Zutaten {
             break;
 		case 51: 
 			name = "Sandwich-Sauce";
-			preis = (float) 0.15;
+			preis = 0.15f;
 			klassisch = true;
 			vegetarisch = true;
 			vegan = false;
@@ -25,7 +25,7 @@ public class Sauce extends Zutaten {
             break;
 		case 52: 
 			name = "Chili-Sauce";
-			preis = (float) 0.25;
+			preis = 0.25f;
 			klassisch = false;
 			vegetarisch = true;
 			vegan = true;
@@ -34,7 +34,7 @@ public class Sauce extends Zutaten {
             break;
 		case 53: 
 			name = "Honig-Senf-Sauce";
-			preis = (float) 0.18;
+			preis = 0.18f;
 			klassisch = false;
 			vegetarisch = true;
 			vegan = false;
@@ -49,7 +49,7 @@ public class Sauce extends Zutaten {
     }
 
     public float berechneHoehe() {
-        return 0;
+        return 0f;
     }
 
     public int getMenge() {
@@ -61,13 +61,7 @@ public class Sauce extends Zutaten {
     }
 
     public String toString() {
-		return "No." + nummer + "\t" + name + " - Preis = " + preis + " Euro\t" + print(klassisch, "Klassisch")
-				+ print(vegan, "Vegan") + print(vegetarisch, "Vegetarisch") + " (" + geschmack + ")";
-	}
-	private String print(boolean b, String s) {
-		if(b) {
-			return " - " + s;
-		}
-		return "";
+		return "No." + nummer + "\t" + name + " - Preis = " + preis + " Euro\t" + Zutaten.printBoolean(klassisch, "Klassisch")
+				+ Zutaten.printBoolean(vegan, "Vegan") + Zutaten.printBoolean(vegetarisch, "Vegetarisch") + " (" + geschmack + ")";
 	}
 }
