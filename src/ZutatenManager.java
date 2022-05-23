@@ -1,8 +1,8 @@
-public class Zutatenliste {
+public class ZutatenManager {
     private Zutaten[] liste = new Zutaten[18];
 
     
-    public Zutatenliste() {
+    public ZutatenManager() {
         for(int i=0; i<4; i++){
             liste[i] = new Broetchen(i+10);
         }

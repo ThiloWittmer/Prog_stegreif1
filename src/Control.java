@@ -5,7 +5,7 @@ public class Control {
 	public static void main(String[] args) {
 		int anzahlBurger = 0;
 		boolean[] fertig = {false, true}; //fertig[0] fuer gesamte Bestellung und fertig[1] fuer Burger Zusammenstellung und fertig[2] ob gerade ein Burger in Zusammenstellung ist
-		Zutatenliste z = new Zutatenliste();
+		ZutatenManager z = new ZutatenManager();
 		Burger[] bestellung = new Burger[10];
 		String eingabe;
 		Scanner sc = new Scanner(System.in);
@@ -13,7 +13,14 @@ public class Control {
 
 		System.out.println("You`ll never burger alone - Create your Burger");
 
+		//Bis bestellt wird 
 		while(!fertig[0]){
+			if(anzahlBurger == 10){
+				System.out.println("Du hast die maximale Anzahl an Burgern von 10 erreicht.");
+				eingabe = "bestellen";
+				inputCheck1(eingabe, z, anzahlBurger, bestellung, fertig);
+				break;
+			}
 			System.out.println("Mit \"menu\" kannst du dir alle zur Verfügung stehenden Zutaten anzeigen lassen.");
 			System.out.println("Mit \"neuer Burger\" und einem Namen dahinter kannst du dir einen neuen Burger mit einem Namen erstellen.");
 			System.out.println("Mit \"meine burger\" kannst du dir deine bisherige Bestellung anschauen.");
@@ -21,21 +28,25 @@ public class Control {
 			eingabe = sc.nextLine();
 			inputCheck1(eingabe, z, anzahlBurger, bestellung, fertig);
 			
+			//Solange ein Burger zusammengestellt wird
 			while(!fertig[1]){
+				//Wenn schon 8 Zutaten hinzugefuegt wurden und noch ein Broetchen fehlt
 				if(bestellung[anzahlBurger].getAnzahlZutaten()==8 && !bestellung[anzahlBurger].istMitBroetchen()){
 					System.out.println("Dein Burger hat fast die maximale Anzahl an Zutaten erreicht und du hast noch kein Broetchen.");
 					System.out.println("Bitte waehle eins mit \"Zutat 11\", \"Zutat 12\", \"Zutat 13\" oder \"Zutat 14\":");
 					eingabe = sc.nextLine();
 					anzahlBurger = inputCheck2(eingabe, anzahlBurger, bestellung, fertig);
-					System.out.println("Dein Burger \"" + bestellung[anzahlBurger].getName() + "\" wird aufgenommen.");
-					anzahlBurger++;
-					fertig[1] = true;
+					eingabe = "ok";
+					anzahlBurger = inputCheck2(eingabe, anzahlBurger, bestellung, fertig);
+					break;
 				}
+				//Wenn die maximale Anzahl an Zutaten erreicht wurde
 				if(bestellung[anzahlBurger].getAnzahlZutaten()==9){
 					System.out.println("Dein Burger hat fast die maximale Anzahl an Zutaten erreicht.");
 					System.out.println("Dein Burger \"" + bestellung[anzahlBurger].getName() + "\" wird aufgenommen.");
 					anzahlBurger++;
 					fertig[1] = true;
+					break;
 				}
 				System.out.println("Bitte gib die " + zaehler + ". Zutat an:");
 				zaehler++;
@@ -57,7 +68,7 @@ public class Control {
 	 * @param anzahlBurger Anzahl der bisher erstellten Burger
 	 * @return	neue Anzahl der erstellten Burger
 	 */
-	public static void inputCheck1(String eingabe, Zutatenliste z, int anzahlBurger, Burger[] bestellung, boolean[] fertig) {
+	public static void inputCheck1(String eingabe, ZutatenManager z, int anzahlBurger, Burger[] bestellung, boolean[] fertig) {
 		if(eingabe.contentEquals("menu")){
 			z.printMenu();
 		}
@@ -78,8 +89,8 @@ public class Control {
 			if(anzahlBurger > 0){
 				fertig[0] = true;
 				System.out.println();
-				System.out.println("Ihre Burger werden frisch zubereitet.");
-				System.out.println("Hier nochmal ein Uebersicht ihrer Bestellung:");
+				System.out.println("Deine Burger werden frisch zubereitet.");
+				System.out.println("Hier nochmal ein Uebersicht deiner Bestellung:");
 				printBestellung(bestellung, anzahlBurger);
 				System.out.println("");
 				System.out.println("-------------------------------------------------------------------");
@@ -91,7 +102,7 @@ public class Control {
 					System.out.println("");
 				}
 			} else {
-				System.out.println("Sie haben keine Burger zusammengestellt. Ihre Bestellung wird abgebrochen.");
+				System.out.println("Du hast leider keine Burger zusammengestellt. Ihre Bestellung wird abgebrochen.");
 				fertig[0] = true;
 			}
 		}
