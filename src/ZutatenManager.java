@@ -48,6 +48,18 @@ public class ZutatenManager {
         }
     }
 
+    public static boolean nummerExistiert(int nummer){
+        //Einer
+        int i = nummer%10;
+        //Zehner
+        int n = nummer/10;
+        switch(n){
+            case 1,2,4,5: if(i<4) return true;
+            case 3: if (i<2) return true;
+        }
+        return false;
+    }
+
     public Zutaten[] getListe() {
         return liste;
     }
