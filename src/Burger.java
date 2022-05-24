@@ -30,7 +30,7 @@ public class Burger{
 	private String name;
 	private Zutaten[] zutaten = new Zutaten[9];
 	private int anzahlZutaten;
-	private Zutatenliste z = new Zutatenliste();
+	private ZutatenManager z = new ZutatenManager();
 	private boolean mitBroetchen= false;
 	private String geschmack;
 
@@ -41,57 +41,61 @@ public class Burger{
 
 	public float berechnePreis(){
 		float preis = 0.0f;
-		for (Zutaten aktZutat : zutaten) {
-			preis += aktZutat.getPreis();
+		for (int i=0; i < anzahlZutaten; i++) {
+			preis += zutaten[i].getPreis();
 		}
+		preis = (Math.round(preis*100))/100f;
 		return preis;
 	}
 
 	public float berechneHoehe(){
 		float hoehe = 0.0f;
-		for (Zutaten aktZutat : zutaten) {
-			hoehe += aktZutat.berechneHoehe();
+		for (int i=0; i < anzahlZutaten; i++) {
+			hoehe += zutaten[i].berechneHoehe();
 		}
 		return hoehe;
 	}
 
 	public boolean istVegan(){
-			for (Zutaten aktZutate : zutaten) {
-				if(!aktZutate.istVegan()){
-					return false;
-				}
-			}return true;
+		for (int i=0; i < anzahlZutaten; i++) {
+			if(!zutaten[i].istVegan()){
+				return false;
+			}
 		}
+		return true;
+	}
 
 	public boolean istVegetarisch(){
-		for (Zutaten aktZutat : zutaten) {
-			if(!aktZutat.istVegetarisch()){
+		for (int i=0; i < anzahlZutaten; i++) {
+			if(!zutaten[i].istVegetarisch()){
 				return false;
 			}
-		}return true;
 		}
+		return true;
+	}
 
 	public boolean mitFleisch(){
-		for (Zutaten aktZutat : zutaten){
-			if(!aktZutat.istKlassisch()){
+		for (int i=0; i < anzahlZutaten; i++){
+			if(!zutaten[i].istKlassisch()){
 				return false;
 			}
-		}return true;
+		}
+		return true;
 	}
 
 	public String Geschmack() {
 		String geschmacksrichtung = "";
-		for(Zutaten aktZutat : zutaten) {
-			if(aktZutat.getNummer()>=50) {
-				geschmacksrichtung += "- " + aktZutat.getGeschmack() + " ";
+		for(int i=0; i < anzahlZutaten; i++) {
+			if(zutaten[i].getNummer()>=50) {
+				geschmacksrichtung += "- " + zutaten[i].getGeschmack() + " ";
 			}
 		}			
 		return geschmacksrichtung;
 	}
 	
 	public boolean klassisch() {		
-		for(Zutaten aktZutat : zutaten) {
-			if(!aktZutat.istKlassisch()) {
+		for(int i=0; i < anzahlZutaten; i++) {
+			if(!zutaten[i].istKlassisch()) {
 				return false;
 			}
 		}	
@@ -100,8 +104,8 @@ public class Burger{
 	
 	public String toString() {
 		String ausgabe = "";	
-		for(Zutaten aktZutat : zutaten) {
-			ausgabe+= "- " + aktZutat.getName() + " ";
+		for(int i=0; i < anzahlZutaten; i++) {
+			ausgabe+= "- " + zutaten[i].getName() + " ";
 		}
 		return ausgabe;
 	}
@@ -109,25 +113,25 @@ public class Burger{
 	public void zutatHinzufuegen(int nummer) {
 		switch(nummer) {
 		case 10, 11, 12, 13:mitBroetchen= true;
-		
+		}
 		zutaten[anzahlZutaten]= z.getZutat(nummer);
 		anzahlZutaten++;
-		}			
 	}
 
 	public int printRezept(Burger burger) {
 		int zeit=0;
 		char c = 'a';
 		
-		System.out.println("Rezept - " + name + " (" + Math.round(berechneHoehe())/10 + " cm, " + 
+		System.out.println("Rezept - " + name + " (" + Math.round(berechneHoehe())/10f + " cm" + Zutaten.printBoolean(klassisch(), "Klassisch") +
 		Zutaten.printBoolean(istVegetarisch(), "Vegetarisch") + Zutaten.printBoolean(istVegan(), "Vegan") + ") - " + berechnePreis() + " Euro");
 		System.out.println("Zutaten: " + burger.toString());
 		System.out.println();
 		System.out.println("Und so geht`s:");
 		
-		for (int i=0; i < zutaten.length; i++) {
-			System.out.println((c+i) + " - ");
+		for (int i=0; i < anzahlZutaten; i++) {
+			System.out.print(c + " - ");
 			zeit += zutaten[i].zubereiten();
+			c++;
 		}
 
 		return zeit;

@@ -1,27 +1,27 @@
 public class Salat extends Zutaten {
     public Salat(int nummer){
         this.nummer = nummer;
-        vegetarisch = false;
+        vegetarisch = true;
         vegan = true;
         switch(nummer){
             case 30:
             klassisch = true;
                 name = "Eisbergsalat";
-                preis = (float) 0.18;
+                preis = 0.18f;
                 break;
             case 31:
             klassisch = false;
                 name = "Rucolasalat";
-                preis = (float) 0.25;
+                preis = 0.25f;
         }
     }
 
     public int zubereiten(){
-        System.out.print(name + " wird gewaschen und geschleudert");
+        System.out.println(name + " wird gewaschen und geschleudert");
         return 0;
     }
 
     public float berechneHoehe() {
-        return 0;
+        return 0f;
     }
 }

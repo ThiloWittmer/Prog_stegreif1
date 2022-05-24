@@ -1,8 +1,8 @@
-public class Zutatenliste {
+public class ZutatenManager {
     private Zutaten[] liste = new Zutaten[18];
 
     
-    public Zutatenliste() {
+    public ZutatenManager() {
         for(int i=0; i<4; i++){
             liste[i] = new Broetchen(i+10);
         }
@@ -46,6 +46,18 @@ public class Zutatenliste {
             System.out.println(aktZutat.toString());
             System.out.println();
         }
+    }
+
+    public static boolean nummerExistiert(int nummer){
+        //Einer
+        int i = nummer%10;
+        //Zehner
+        int n = nummer/10;
+        switch(n){
+            case 1,2,4,5: if(i<4) return true;
+            case 3: if (i<2) return true;
+        }
+        return false;
     }
 
     public Zutaten[] getListe() {

@@ -7,7 +7,7 @@ public class Bratling extends Zutaten {
 		switch(nummer) {
 		case 20: 
 			name = "Rindfleisch (Original)";
-			preis = (float) 1.85;
+			preis = 1.85f;
 			klassisch = true;
 			vegetarisch = false;
 			vegan = false;
@@ -16,7 +16,7 @@ public class Bratling extends Zutaten {
 			break;
 		case 21: 
 			name = "Haendchenfleisch gegrillt";
-			preis = (float) 1.15;
+			preis = 1.15f;
 			klassisch = false;
 			vegetarisch = false;
 			vegan = false;
@@ -25,16 +25,16 @@ public class Bratling extends Zutaten {
 			break;
 		case 22: 
 			name = "Falafel-Bratling";
-			preis = (float) 1.45;
+			preis = 1.45f;
 			klassisch = false;
-			vegetarisch = false;
+			vegetarisch = true;
 			vegan = true;
 			hoehe = 21;
 			bratzeit = 210;
 			break;
 		case 23: 
 			name = "Gemuese-Bratling";
-			preis = (float) 1.75;
+			preis = 1.75f;
 			klassisch = false;
 			vegetarisch = true;
 			vegan = false;
@@ -44,13 +44,13 @@ public class Bratling extends Zutaten {
     }
     
     public int zubereiten() {
-		System.out.print(name + " von jeder Seite " + bratzeit/60/2 + " Minuten und " + ((bratzeit % 60)/2) + " Sekunden grillen.");
+		System.out.println(name + " von jeder Seite " + bratzeit/60/2 + " Minuten und " + ((bratzeit % 60)/2) + " Sekunden grillen.");
 		return  bratzeit;
 	}
 
 	public float berechneHoehe() {
 		float h;
-		h = hoehe - ((float) bratzeit/60 * (hoehe * (float) 0.035));
+		h = hoehe - (bratzeit/60f * (hoehe * 0.035f));
 		return h;
 	}
 
