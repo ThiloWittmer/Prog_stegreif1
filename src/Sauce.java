@@ -55,9 +55,6 @@ public class Sauce extends Zutaten {
         }
     }
 
-    /**
-     * Soße wird zur Zubereitung 
-     */
     public int zubereiten() {
         System.out.println(name + " wird geschuettelt");
         return 0;
@@ -76,7 +73,8 @@ public class Sauce extends Zutaten {
     }
 
     /***
-     * return Die Paramter werden ausgelesen und in einem String ausgegeben - je nach Wahrheitswert der richtige Geschmack
+     * return In dieser toString Methode werden zu den einzelnen Parametern noch die richtige Geschmacksrichtung ausgegeben
+     *  
      */
     public String toString() {
 		return "No." + nummer + "\t" + name + " - Preis = " + preis + " Euro\t" + Zutaten.printBoolean(klassisch, "Klassisch")
