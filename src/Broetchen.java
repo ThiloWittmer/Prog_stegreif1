@@ -1,3 +1,8 @@
+/***
+ * @class Broetchen - Werte Definiton der einzelnen Broetchen 
+ * @parameter backzeit - jedes Broetchen hat seine backzeit
+ * @parameter hohe -jedes Broetchen hat seine eigene Höhe die sich beim zubereiten neu berechnet
+ */
 public class Broetchen extends Zutaten {
 	private int backzeit;
 	private int hoehe;
@@ -43,11 +48,18 @@ public class Broetchen extends Zutaten {
 		}
 	}
 	
+	/**
+	 * 
+	 */
+ @Override
 	public int zubereiten() {
 		System.out.println(name + " " + backzeit/60f + " Minuten roesten und schneiden.");
 		return backzeit;
 	}
-
+	/**
+	 * 
+	 */
+ @Override
 	public float berechneHoehe() {
 		float h;
 		h =  (float) backzeit/60 * (hoehe * 0.025f) + hoehe;
