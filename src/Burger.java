@@ -1,31 +1,15 @@
 /***
- * Data:
-•	String: name
-•	Object [9]: Zutaten
-•	Int: anzahlZutaten 
-
-	!!Konstruktor mit Name als Parameter muss noch implementiert werden.
-	Zutaten werden jetzt ueber die Klasse Zutatenliste verwaltet: 
-	Die Methode z.getZutat(int nummer) gibt ein passendes Objekt der Zutat zurueck
-
-Methoden:
-
-	//Aaron
-•	Float: berechnePreis()
-•	Float: berechneHoehe()
-•	Boolean: istVegan()
-•	Boolean: istVegetarisch()
-•	Boolean: istMitFleisch()
-
-	//Mohamad
-•	String: geschmack() [abhängig von Sauce]
-•	Boolean: klassisch()
-•	Int: zeitBerechnen()
-•	Boolean: zutatHinzufuegen(int anzahlZutaten, int nummer) // boolean: existiert Brötchen?; nummer: nummer der Zutat
-•	String: zutatenString() (Alle Zutaten in ein String)
-
- */
-
+ * @author Timo, Mohamad, Aaron
+ * @version 3.0
+ * 
+ * @class Burger - Hier wird pro Eingabeaufforderung ein Objekt vom Typ Burger erstellt
+ * @public Die Methoden stehen auf public da die Klasse Controler auf diese zugreifen muss
+ * @param String name = jeder Burger bekommt einen eigenen Namen
+ * @param Zutaten[] = pro Burger können max. 9 Zuaten hinzugefügt werden welche im Array gespeichert werden
+ * @param anzahlZutaten = Zähler für die Anzahl
+ * @param mitBroetchen = pro BUrger MUSS ein Brötchen ausgewählt werden
+ * @param String Geschmack = Ein Burger hat je nach Soße und Zutaten einen bestimmten Geschmack
+ *  */ 
 public class Burger{
 	private String name;
 	private Zutaten[] zutaten = new Zutaten[9];
@@ -34,11 +18,21 @@ public class Burger{
 	private boolean mitBroetchen= false;
 	private String geschmack;
 
+	/***
+	 * 
+	 * @param name Über den Konstruktor der Klasse wird ein Burger mit seinem Namen definiert
+	 */
 
 	public Burger(String name){
 		this.name = name;
 	}
 
+	/**
+	 * @param preis		Der Preis berechnet sich durch alle hinzugefügten Zutaten -
+	 * 					dafür wird das gesamte Zutaten Array invertiert und aus jeder Klasse die Methode .getPreis() aufgerufen 
+	 * 					welche den Preis der jeweiligen Zutat zurückgibt
+	 * @return preis 	Der Gesamtpreis aller Zutaten 
+	 */
 	public float berechnePreis(){
 		float preis = 0.0f;
 		for (int i=0; i < anzahlZutaten; i++) {
@@ -48,6 +42,11 @@ public class Burger{
 		return preis;
 	}
 
+	/***
+	 * @param hoehe		Gleiches Prinzip wie bei der Methode berechnePreis() - das Array Zuaten wird invertiert und ruft die Methode 
+	 * 					berechneHoehe() der jeweiligen Klasse auf und wird in der Varibalen hoehe gespeichert
+	 * @return hoehe	Gibt die Gesamthoehe des Burgers zurück
+	 */
 	public float berechneHoehe(){
 		float hoehe = 0.0f;
 		for (int i=0; i < anzahlZutaten; i++) {
@@ -55,6 +54,12 @@ public class Burger{
 		}
 		return hoehe;
 	}
+
+	/**+
+	 * Die Methoden istVegan() - istVegatrisch() - mitFleisch() prüfen die einzelen Zutaten auf ihre Inhaltsstoffe und lesen 
+	 * aus dem jeweiligen Zutaten Objekt den Paramter aus 
+	 * @return Boolean Wert welcher angibt ob die Variante true oder false ist
+	 */
 
 	public boolean istVegan(){
 		for (int i=0; i < anzahlZutaten; i++) {
@@ -83,6 +88,11 @@ public class Burger{
 		return true;
 	}
 
+	/***
+	 * Gibt die Geschmacksrichtung zurück - hierzu wird die jeweilige Soßennummer abgefragt und aus der Klasse Sauce 
+	 * mittels der Methode getGeschmack() dieser Wert übergeben
+	 * @return geschmacksrichtung = Geschmack der jeweiligen Soße
+	 */
 	public String Geschmack() {
 		String geschmacksrichtung = "";
 		for(int i=0; i < anzahlZutaten; i++) {
@@ -93,6 +103,10 @@ public class Burger{
 		return geschmacksrichtung;
 	}
 	
+	/**
+	 * Wenn alle Zutaten den Parameter klassisch sind wird der Burger Typ zu klassisch
+	 * @return boolean klassisch oder nicht
+	 */
 	public boolean klassisch() {		
 		for(int i=0; i < anzahlZutaten; i++) {
 			if(!zutaten[i].istKlassisch()) {
@@ -101,7 +115,10 @@ public class Burger{
 		}	
 		return true;
 	}
-	
+
+	/**
+	 * @return Fragt den Namen der Zutat aus der Nummer ab und gibt Sie in einem String aus
+	 */
 	public String toString() {
 		String ausgabe = "";	
 		for(int i=0; i < anzahlZutaten; i++) {
@@ -110,6 +127,12 @@ public class Burger{
 		return ausgabe;
 	}
 
+	/***
+	 * Hier werden die hinzugefügten Zutaten aus der Abfrage in das Array zutaten[] gespeichert -
+	 * dazu wird aus der Klasse Zutatenmanager mittels der Nummer die jeweilige Zutat zurückgeliefert
+	 * @param mitBroetchen = es wird abgefragt ob schon ein Brötchen hinzugefügt wurde
+	 * @param anzahlZutaten = bei jeder Zutat wird der Zähler erhöt (max. 9)
+	 */
 	public void zutatHinzufuegen(int nummer) {
 		switch(nummer) {
 		case 10, 11, 12, 13:mitBroetchen= true;
@@ -118,6 +141,13 @@ public class Burger{
 		anzahlZutaten++;
 	}
 
+	/***
+	 * Ausgabe des Burger Rezeptes - Aufruf der obigen Methoden 
+	 * Die Hoehe wird auf zwei Nachkommastellen gerundet und mit den anderen Werten ausgegeben
+	 * @param burger = Der Methode wird immer ein Objekt vom Typ Burger übergeben
+	 * @param char c = Als Aufzählungselemt für die Ausgabe wird die Variable c mit jedem durchlauf erhöht
+	 * @return zeit = Die Zubereitungszeit des Burgers wird gespeichert und zurückgegeben - durch die jeweilige Methode in der Klasse berechnet
+	 */
 	public int printRezept(Burger burger) {
 		int zeit=0;
 		char c = 'a';

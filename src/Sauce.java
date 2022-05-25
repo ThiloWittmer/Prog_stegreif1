@@ -1,7 +1,19 @@
+/**
+ * @class Sauce = hier werden die einzelnen Soßen abgelegt 
+ * @param menge = Die ml der jeweiligen Soßen Portionierung
+ * @extends Die Klasse Soßen erbt von der Klasse Zutaten
+ */
+
 public class Sauce extends Zutaten {
     private int menge;
     private String geschmack;
 
+
+    /***
+     * Die Zutaten werden mit Nummer unterschieden - ab 50 bis 53 die Saucen
+     * Je nach Nummer wird die jeweilige Soße in einem Case ausgelesen und in der Klasse Burger im Array z gespeichert
+     * @param nummer
+     */
     public Sauce(int nummer){
         this.nummer = nummer;
 		switch(nummer) {
@@ -43,6 +55,9 @@ public class Sauce extends Zutaten {
         }
     }
 
+    /**
+     * Soße wird zur Zubereitung 
+     */
     public int zubereiten() {
         System.out.println(name + " wird geschuettelt");
         return 0;
@@ -60,6 +75,9 @@ public class Sauce extends Zutaten {
         return geschmack;
     }
 
+    /***
+     * return Die Paramter werden ausgelesen und in einem String ausgegeben - je nach Wahrheitswert der richtige Geschmack
+     */
     public String toString() {
 		return "No." + nummer + "\t" + name + " - Preis = " + preis + " Euro\t" + Zutaten.printBoolean(klassisch, "Klassisch")
 				+ Zutaten.printBoolean(vegan, "Vegan") + Zutaten.printBoolean(vegetarisch, "Vegetarisch") + " (" + geschmack + ")";
