@@ -1,3 +1,12 @@
+/***
+ * @class Zutaten - Werte Definiton der Zutaten der OberKlasse
+ * @parameter nummer - jede Zutat hat eine Nummer  
+ * @parameter name - jede Zutat hat einen Name 
+ * @parameter preis - jede Zutat hat einen Preis
+ * @parameter klassisch - die Zutat kann klassisch sein
+ * @parameter vegan- die Zutat kann vegan sein
+ * @parameter vegetarisch - die Zutat kann vegetarisch sein 
+ */
 public class ZutatenManager {
     private Zutaten[] liste = new Zutaten[18];
 
