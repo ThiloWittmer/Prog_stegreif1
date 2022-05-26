@@ -14,7 +14,6 @@ public class Burger{
 	private String name;
 	private Zutaten[] zutaten = new Zutaten[9];
 	private int anzahlZutaten;
-	private ZutatenManager z = new ZutatenManager();
 	private boolean mitBroetchen= false;
 	private String geschmack;
 
@@ -136,7 +135,7 @@ public class Burger{
 		switch(nummer) {
 		case 10, 11, 12, 13:mitBroetchen= true;
 		}
-		zutaten[anzahlZutaten]= z.getZutat(nummer);
+		zutaten[anzahlZutaten]= ZutatenManager.getZutat(nummer);
 		anzahlZutaten++;
 	}
 

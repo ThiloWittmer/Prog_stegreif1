@@ -6,7 +6,6 @@ public class Control {
 		int anzahlBurger = 0;
 		//fertig[0] fuer gesamte Bestellung und fertig[1] fuer Burger Zusammenstellung und fertig[2] ob die Eingabe korrekt war
 		boolean[] fertig = {false, true, false};
-		ZutatenManager z = new ZutatenManager();
 		Burger[] bestellung = new Burger[10];
 		String eingabe = null;
 		Scanner sc = new Scanner(System.in);
@@ -20,11 +19,11 @@ public class Control {
 			if(anzahlBurger == 10){
 				System.out.println("Du hast die maximale Anzahl an Burgern von 10 erreicht.");
 				eingabe = "bestellen";
-				inputMenu(eingabe, z, anzahlBurger, bestellung, fertig);
+				inputMenu(eingabe, anzahlBurger, bestellung, fertig);
 				break;
 			}
 
-			inputCheckMenu(anzahlBurger, fertig, z, bestellung, eingabe, sc);
+			inputCheckMenu(anzahlBurger, fertig, bestellung, eingabe, sc);
 
 			//Solange ein Burger zusammengestellt wird
 			while(!fertig[1]){
@@ -72,7 +71,7 @@ public class Control {
 		return eingabe;
 	}
 
-	private static void inputCheckMenu(int anzahlBurger, boolean[] fertig, ZutatenManager z, Burger[] bestellung, String eingabe, Scanner sc) {
+	private static void inputCheckMenu(int anzahlBurger, boolean[] fertig, Burger[] bestellung, String eingabe, Scanner sc) {
 		//Wiederholt bis eine korrekte Eingabe getätigt wurde
 		while(!fertig[2]){
 			System.out.println("Mit \"menu\" kannst du dir alle zur Verfügung stehenden Zutaten anzeigen lassen.");
@@ -80,7 +79,7 @@ public class Control {
 			System.out.println("Mit \"meine burger\" kannst du dir deine bisherige Bestellung anschauen.");
 			System.out.println("Mit \"bestellen\" kannst du deine Bestellung abschliessen.");
 			eingabe = sc.nextLine();
-			inputMenu(eingabe, z, anzahlBurger, bestellung, fertig);
+			inputMenu(eingabe, anzahlBurger, bestellung, fertig);
 			if(!fertig[2]) {
 				System.out.println();
 				System.out.println("Bitte achte darauf, dass du einen der folgenden Befehle verwendest:");
@@ -97,9 +96,9 @@ public class Control {
 	 * @param anzahlBurger Anzahl der bisher erstellten Burger
 	 * @return	neue Anzahl der erstellten Burger
 	 */
-	public static void inputMenu(String eingabe, ZutatenManager z, int anzahlBurger, Burger[] bestellung, boolean[] fertig) {
+	public static void inputMenu(String eingabe, int anzahlBurger, Burger[] bestellung, boolean[] fertig) {
 		if(eingabe.contentEquals("menu")){
-			z.printMenu();
+			ZutatenManager.printMenu();
 			fertig[2] = true;
 		}
 		if(eingabe.startsWith("neuer Burger ")){

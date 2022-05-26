@@ -8,28 +8,8 @@
  * @parameter vegetarisch - die Zutat kann vegetarisch sein 
  */
 public class ZutatenManager {
-    private Zutaten[] liste = new Zutaten[18];
 
-    
-    public ZutatenManager() {
-        for(int i=0; i<4; i++){
-            liste[i] = new Broetchen(i+10);
-        }
-        for(int i=0; i<4; i++){
-            liste[i+4] = new Bratling(i+20);
-        }
-        for(int i=0; i<2; i++){
-            liste[i+8] = new Salat(i+30);
-        }
-        for(int i=0; i<4; i++){
-            liste[i+10] = new Gemuese(i+40);
-        }
-        for(int i=0; i<4; i++){
-            liste[i+14] = new Sauce(i+50);
-        }
-    }
-
-    public Zutaten getZutat(int nummer) {
+    public static Zutaten getZutat(int nummer) {
         switch(nummer){
             case 10,11,12,13: 
                 Zutaten broetchen = new Broetchen(nummer);
@@ -47,10 +27,26 @@ public class ZutatenManager {
                 Zutaten sauce = new Sauce(nummer);
                 return sauce;
         }
-        return liste[0];
+        return null;
     }
 
-    public void printMenu() {
+    public static void printMenu() {
+        Zutaten[] liste = new Zutaten[18];
+        for(int i=0; i<4; i++){
+            liste[i] = new Broetchen(i+10);
+        }
+        for(int i=0; i<4; i++){
+            liste[i+4] = new Bratling(i+20);
+        }
+        for(int i=0; i<2; i++){
+            liste[i+8] = new Salat(i+30);
+        }
+        for(int i=0; i<4; i++){
+            liste[i+10] = new Gemuese(i+40);
+        }
+        for(int i=0; i<4; i++){
+            liste[i+14] = new Sauce(i+50);
+        }
         for (Zutaten aktZutat : liste) {
             System.out.println(aktZutat.toString());
             System.out.println();
@@ -67,9 +63,5 @@ public class ZutatenManager {
             case 3: if (i<2) return true;
         }
         return false;
-    }
-
-    public Zutaten[] getListe() {
-        return liste;
     }
 }
