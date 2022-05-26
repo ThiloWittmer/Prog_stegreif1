@@ -60,7 +60,6 @@ public class Burger{
 	 * aus dem jeweiligen Zutaten Objekt den Paramter aus 
 	 * @return Boolean Wert welcher angibt ob die Variante true oder false ist
 	 */
-
 	public boolean istVegan(){
 		for (int i=0; i < anzahlZutaten; i++) {
 			if(!zutaten[i].istVegan()){

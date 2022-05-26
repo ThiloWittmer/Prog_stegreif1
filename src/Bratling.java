@@ -1,3 +1,9 @@
+/***
+ * @class Bratling - Werte Definiton der verschiedenen Bratlinge
+ * @parameter bratzeit - jeder Bratling hat seine Bratzeit 
+ * @parameter hohe -jeder Bratling hat seine eigene Höhe die sich beim zubereiten neu berechnet
+ */
+
 public class Bratling extends Zutaten {
     private int bratzeit;
     private int hoehe;
@@ -42,12 +48,20 @@ public class Bratling extends Zutaten {
 			bratzeit = 240;
 		}
     }
-    
+
+	/***
+	 * Zubereiung berechnet Bratzeit
+	 * @return bratzeit = bratzeit pro Seite
+	 */
     public int zubereiten() {
 		System.out.println(name + " von jeder Seite " + bratzeit/60/2 + " Minuten und " + ((bratzeit % 60)/2) + " Sekunden grillen.");
 		return  bratzeit;
 	}
 
+
+	/***
+	 * @return h = neu berechnete Hoehe mittels der Bratzeit
+	 */
 	public float berechneHoehe() {
 		float h;
 		h = hoehe - (bratzeit/60f * (hoehe * 0.035f));

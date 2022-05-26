@@ -48,16 +48,16 @@ public class Broetchen extends Zutaten {
 		}
 	}
 	
-	/**
-	 * 
+	/***
+	 * @return backzeit = backzeit in sec durch 60 sec um Minuten zurückzugeben
 	 */
  @Override
 	public int zubereiten() {
 		System.out.println(name + " " + backzeit/60f + " Minuten roesten und schneiden.");
 		return backzeit;
 	}
-	/**
-	 * 
+	/***
+	 * @return h = Hoehe des Broetchens berrechnen 
 	 */
  @Override
 	public float berechneHoehe() {
