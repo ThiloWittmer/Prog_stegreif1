@@ -55,11 +55,18 @@ public class Sauce extends Zutaten {
         }
     }
 
+    /***
+     * Gibt Zubereitungsanweisung aus
+     * @return Zubereitungszeit(0)
+     */
     public int zubereiten() {
         System.out.println(name + " wird geschuettelt");
         return 0;
     }
 
+    /***
+     * @return die Hoehe (0)
+     */
     public float berechneHoehe() {
         return 0f;
     }

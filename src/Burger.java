@@ -1,5 +1,5 @@
 /***
- * @author Timo, Mohamad, Aaron
+ * @author Thilo, Muhanad, Aaron
  * @version 3.0
  * 
  * @class Burger - Hier wird pro Eingabeaufforderung ein Objekt vom Typ Burger erstellt
@@ -181,10 +181,3 @@ public class Burger{
 		return geschmack;
 	}
 }	
-	
-	
-	
-	
-
-
-

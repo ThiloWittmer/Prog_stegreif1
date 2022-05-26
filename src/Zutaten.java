@@ -18,18 +18,25 @@ public abstract class Zutaten {
 	
 	/***
 	 *die Methode zubereiten - Ausgabe jeder Zutat, wie sie zubereitet wird
-	 * @return gibt wie viele Sekunden die Zubereitung gedauert hat zurück
-	 * die Methode berechneHoehe - berechnung der Hoehe vom Bürger
+	 * @return gibt wie viele Sekunden die Zubereitung gedauert hat zurï¿½ck
+	 * die Methode berechneHoehe - berechnung der Hoehe vom Bï¿½rger
 	 */
 	public abstract int zubereiten();
 	public abstract float berechneHoehe();
 	
-	
+	/***
+	 * @return die Werte der Zutat als String
+	 */
 	public String toString() {
 		return "No." + nummer + "\t" + name + " - Preis = " + preis + " Euro\t" + printBoolean(klassisch, "Klassisch")
 				+ printBoolean(vegan, "Vegan") + printBoolean(vegetarisch, "Vegetarisch");
 	}
 
+	/***
+	 * @param b boolean der Zutateneigenschaft
+	 * @param s Beschreibung des boolean
+	 * @return	Wenn b==true dann wird die Beschreibung (z.B. "vegan") zurueck gegeben
+	 */
 	public static String printBoolean(boolean b, String s) {
 		if(b) {
 			return " - " + s;

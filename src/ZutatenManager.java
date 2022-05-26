@@ -1,14 +1,14 @@
 /***
- * @class Zutaten - Werte Definiton der Zutaten der OberKlasse
- * @parameter nummer - jede Zutat hat eine Nummer  
- * @parameter name - jede Zutat hat einen Name 
- * @parameter preis - jede Zutat hat einen Preis
- * @parameter klassisch - die Zutat kann klassisch sein
- * @parameter vegan- die Zutat kann vegan sein
- * @parameter vegetarisch - die Zutat kann vegetarisch sein 
+ * @class Hier werden alle Zutaten verwaltet, bei Bedarf neu erzeugt und
+ * es besteht die Option zu kontrollieren, ob eine Bestellnumer existiert
  */
 public class ZutatenManager {
 
+    /***
+     * Methode, um neue  Zutaten zu erzeugen
+     * @param nummer Bestellnummer der Zutat
+     * @return Objekt der passenden Zutat
+     */
     public static Zutaten getZutat(int nummer) {
         switch(nummer){
             case 10,11,12,13: 
@@ -30,6 +30,9 @@ public class ZutatenManager {
         return null;
     }
 
+    /***
+     * Beschreibung aller Zutaten werden ausgegeben
+     */
     public static void printMenu() {
         Zutaten[] liste = new Zutaten[18];
         for(int i=0; i<4; i++){
@@ -53,6 +56,11 @@ public class ZutatenManager {
         }
     }
 
+    /***
+     * Es wird kontrolliert, ob die mitgegebene Bestellnummer existiert
+     * @param nummer Bestllnummer
+     * @return true, wenn Bestellnummer existiert
+     */
     public static boolean nummerExistiert(int nummer){
         //Einer
         int i = nummer%10;

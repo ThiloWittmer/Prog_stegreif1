@@ -6,6 +6,10 @@
 public class Gemuese extends Zutaten {
     private int scheibenDicke, scheibenAnzahl;
 
+    /***
+     * Kunstruktor; erzeugt Gemuese basierend auf der Bestellnummer
+     * @param nummer Bestellnummer des Broetchens
+     */
     public Gemuese(int nummer){
         this.nummer = nummer;
         vegetarisch = true;
@@ -41,6 +45,10 @@ public class Gemuese extends Zutaten {
         }
     }
 
+    /***
+     * Gibt Zubereitungsanweisung aus
+     * @return Zubereitungszeit
+     */
     public int zubereiten() {
         System.out.println(name + " wird gewaschen");
         for(int i=1; i <= scheibenAnzahl; i++){
@@ -49,6 +57,9 @@ public class Gemuese extends Zutaten {
         return scheibenAnzahl;
     }
 
+    /***
+     * @return die Hoehe des Gemuese
+     */
     public float berechneHoehe() {
         return (float) scheibenAnzahl * scheibenDicke;
     }

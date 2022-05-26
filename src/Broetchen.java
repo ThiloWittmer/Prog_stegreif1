@@ -7,6 +7,10 @@ public class Broetchen extends Zutaten {
 	private int backzeit;
 	private int hoehe;
 	
+	/***
+	 * Kunstruktor; erzeugt ein Broetchen basierend auf der Bestellnummer
+	 * @param nummer Bestellnummer des Broetchens
+	 */
 	public Broetchen(int nummer) {
 		this.nummer = nummer;
 		switch(nummer) {

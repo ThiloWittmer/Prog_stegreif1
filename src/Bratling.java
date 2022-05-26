@@ -1,13 +1,17 @@
 /***
  * @class Bratling - Werte Definiton der verschiedenen Bratlinge
  * @parameter bratzeit - jeder Bratling hat seine Bratzeit 
- * @parameter hohe -jeder Bratling hat seine eigene Höhe die sich beim zubereiten neu berechnet
+ * @parameter hoehe -jeder Bratling hat seine eigene Höhe die sich beim zubereiten neu berechnet
  */
 
 public class Bratling extends Zutaten {
     private int bratzeit;
     private int hoehe;
 
+	/***
+	 * Kunstruktor; erzeugt ein Bratling basierend auf der Bestellnummer
+	 * @param nummer Bestellnummer des Bratlings
+	 */
     public Bratling(int nummer){
         this.nummer = nummer;
 		switch(nummer) {
@@ -21,7 +25,7 @@ public class Bratling extends Zutaten {
 			bratzeit = 270;
 			break;
 		case 21: 
-			name = "Haendchenfleisch gegrillt";
+			name = "Haenchenfleisch gegrillt";
 			preis = 1.15f;
 			klassisch = false;
 			vegetarisch = false;
