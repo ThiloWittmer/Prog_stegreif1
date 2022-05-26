@@ -1,8 +1,20 @@
+/**
+ * @class Salat = hier werden der einzelnen Salat abgelegt 
+ * @extends Die Klasse Salat erbt von der Klasse Zutaten
+ */
 public class Salat extends Zutaten {
     public Salat(int nummer){
-        this.nummer = nummer;
+        this.nummer = nummer;      
         vegetarisch = true;
         vegan = true;
+        
+        
+        /***
+         * Die Zutaten werden mit Nummer unterschieden - zwischen 30 und 31 der Salat 
+         * Je nach Nummer wird der jeweilige Salat in einem Case ausgelesen und in der Klasse Burger im Array z gespeichert
+         * @param nummer
+         */
+        
         switch(nummer){
             case 30:
             klassisch = true;
