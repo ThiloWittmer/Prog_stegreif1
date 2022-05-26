@@ -1,3 +1,8 @@
+/***
+ * @class Gemuese - Werte Definition der verschiedenn Gemuesesorten
+ * @parameter scheibenDicke - Dicke einer Gemuesescheibe
+ * @parameter scheibenAnzahl - Anzahl der Scheiben pro Gemuese Zutat
+ */
 public class Gemuese extends Zutaten {
     private int scheibenDicke, scheibenAnzahl;
 
