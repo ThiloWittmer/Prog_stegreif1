@@ -16,6 +16,7 @@ public class Burger{
 	private int anzahlZutaten;
 	private boolean mitBroetchen= false;
 	private String geschmack;
+	private final int MAX_ANZAHL = 9;
 
 	/***
 	 * 
@@ -24,6 +25,14 @@ public class Burger{
 
 	public Burger(String name){
 		this.name = name;
+	}
+
+	/***
+	 * @return true, wenn maximale Anzahl an Zutaten erreicht wurde
+	 */
+	public boolean isFull(){
+		if(anzahlZutaten == MAX_ANZAHL) return true;
+		return false;
 	}
 
 	/**
@@ -59,27 +68,18 @@ public class Burger{
 	 * aus dem jeweiligen Zutaten Objekt den Paramter aus 
 	 * @return Boolean Wert welcher angibt ob die Variante true oder false ist
 	 */
-	public boolean istVegan(){
+	public boolean isVegan(){
 		for (int i=0; i < anzahlZutaten; i++) {
-			if(!zutaten[i].istVegan()){
+			if(!zutaten[i].isVegan()){
 				return false;
 			}
 		}
 		return true;
 	}
 
-	public boolean istVegetarisch(){
+	public boolean isVegetarisch(){
 		for (int i=0; i < anzahlZutaten; i++) {
-			if(!zutaten[i].istVegetarisch()){
-				return false;
-			}
-		}
-		return true;
-	}
-
-	public boolean mitFleisch(){
-		for (int i=0; i < anzahlZutaten; i++){
-			if(!zutaten[i].istKlassisch()){
+			if(!zutaten[i].isVegetarisch()){
 				return false;
 			}
 		}
@@ -91,10 +91,10 @@ public class Burger{
 	 * mittels der Methode getGeschmack() dieser Wert übergeben
 	 * @return geschmacksrichtung = Geschmack der jeweiligen Soße
 	 */
-	public String Geschmack() {
+	public String geschmack() {
 		String geschmacksrichtung = "";
 		for(int i=0; i < anzahlZutaten; i++) {
-			if(zutaten[i].getNummer()>=50) {
+			if(zutaten[i].getClass() == Sauce.class) {
 				geschmacksrichtung += "- " + zutaten[i].getGeschmack() + " ";
 			}
 		}			
@@ -107,7 +107,7 @@ public class Burger{
 	 */
 	public boolean klassisch() {		
 		for(int i=0; i < anzahlZutaten; i++) {
-			if(!zutaten[i].istKlassisch()) {
+			if(!zutaten[i].isKlassisch()) {
 				return false;
 			}
 		}	
@@ -128,14 +128,14 @@ public class Burger{
 	/***
 	 * Hier werden die hinzugefügten Zutaten aus der Abfrage in das Array zutaten[] gespeichert -
 	 * dazu wird aus der Klasse Zutatenmanager mittels der Nummer die jeweilige Zutat zurückgeliefert
-	 * @param mitBroetchen = es wird abgefragt ob schon ein Brötchen hinzugefügt wurde
+	 * @param mitBroetchen = es wird abgefragt ob gerade ein Brötchen hinzugefügt wurde
 	 * @param anzahlZutaten = bei jeder Zutat wird der Zähler erhöt (max. 9)
 	 */
-	public void zutatHinzufuegen(int nummer) {
-		switch(nummer) {
-		case 10, 11, 12, 13:mitBroetchen= true;
+	public void zutatHinzufuegen(Zutaten zutat) {
+		zutaten[anzahlZutaten]= zutat;
+		if(zutaten[anzahlZutaten].getClass() == Broetchen.class){
+			mitBroetchen = true;
 		}
-		zutaten[anzahlZutaten]= ZutatenManager.getZutat(nummer);
 		anzahlZutaten++;
 	}
 
@@ -146,13 +146,13 @@ public class Burger{
 	 * @param char c = Als Aufzählungselemt für die Ausgabe wird die Variable c mit jedem durchlauf erhöht
 	 * @return zeit = Die Zubereitungszeit des Burgers wird gespeichert und zurückgegeben - durch die jeweilige Methode in der Klasse berechnet
 	 */
-	public int printRezept(Burger burger) {
+	public int printRezept() {
 		int zeit=0;
 		char c = 'a';
 		
 		System.out.println("Rezept - " + name + " (" + Math.round(berechneHoehe())/10f + " cm" + Zutaten.printBoolean(klassisch(), "Klassisch") +
-		Zutaten.printBoolean(istVegetarisch(), "Vegetarisch") + Zutaten.printBoolean(istVegan(), "Vegan") + ") - " + berechnePreis() + " Euro");
-		System.out.println("Zutaten: " + burger.toString());
+		Zutaten.printBoolean(isVegetarisch(), "Vegetarisch") + Zutaten.printBoolean(isVegan(), "Vegan") + ") - " + berechnePreis() + " Euro");
+		System.out.println("Zutaten: " + toString());
 		System.out.println();
 		System.out.println("Und so geht`s:");
 		

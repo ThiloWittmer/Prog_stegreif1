@@ -14,9 +14,12 @@ public class Sauce extends Zutaten {
      * Je nach Nummer wird die jeweilige Soße in einem Case ausgelesen und in der Klasse Burger im Array z gespeichert
      * @param nummer
      */
-    public Sauce(int nummer){
-        this.nummer = nummer;
-		switch(nummer) {
+    public Sauce(int nummer, String name, float preis, boolean klassisch, boolean vegetarisch, boolean vegan, int menge, String geschmack){
+        super(nummer, name, preis, klassisch, vegan, vegetarisch);
+        this.menge = menge;
+        this.geschmack = geschmack;
+
+		/**switch(nummer) {
 		case 50: 
 			name = "Ketchup";
 			preis = 0.1f;
@@ -52,7 +55,7 @@ public class Sauce extends Zutaten {
 			vegan = false;
             menge = 8;
             geschmack = "suess";
-        }
+        }*/
     }
 
     /***

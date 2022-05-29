@@ -12,9 +12,12 @@ public class Bratling extends Zutaten {
 	 * Kunstruktor; erzeugt ein Bratling basierend auf der Bestellnummer
 	 * @param nummer Bestellnummer des Bratlings
 	 */
-    public Bratling(int nummer){
-        this.nummer = nummer;
-		switch(nummer) {
+    public Bratling(int nummer, String name, float preis, boolean klassisch, boolean vegetarisch, boolean vegan, int hoehe, int bratzeit){
+        super(nummer, name, preis, klassisch, vegan, vegetarisch);
+		this.hoehe = hoehe;
+		this.bratzeit = bratzeit;
+	}
+		/**switch(nummer) {
 		case 20: 
 			name = "Rindfleisch (Original)";
 			preis = 1.85f;
@@ -50,15 +53,18 @@ public class Bratling extends Zutaten {
 			vegan = false;
 			hoehe = 25;
 			bratzeit = 240;
-		}
-    }
+		}*/
 
 	/***
 	 * Zubereiung berechnet Bratzeit
 	 * @return bratzeit = bratzeit pro Seite
 	 */
     public int zubereiten() {
-		System.out.println(name + " von jeder Seite " + bratzeit/60/2 + " Minuten und " + ((bratzeit % 60)/2) + " Sekunden grillen.");
+		String min;
+		if(bratzeit/60/2 > 1) {
+			min = "Minuten";
+		} else min = "Minute";
+		System.out.println(name + " von jeder Seite " + bratzeit/60/2 + " " + min + " und " + ((bratzeit % 60)/2) + " Sekunden grillen.");
 		return  bratzeit;
 	}
 
@@ -68,7 +74,7 @@ public class Bratling extends Zutaten {
 	 */
 	public float berechneHoehe() {
 		float h;
-		h = hoehe - (bratzeit/60f * (hoehe * 0.035f));
+		h = hoehe - (bratzeit/60.0f * (hoehe * 0.035f));
 		return h;
 	}
 

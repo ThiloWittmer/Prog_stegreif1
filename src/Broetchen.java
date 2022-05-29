@@ -11,9 +11,12 @@ public class Broetchen extends Zutaten {
 	 * Kunstruktor; erzeugt ein Broetchen basierend auf der Bestellnummer
 	 * @param nummer Bestellnummer des Broetchens
 	 */
-	public Broetchen(int nummer) {
-		this.nummer = nummer;
-		switch(nummer) {
+	public Broetchen(int nummer, String name, float preis, boolean klassisch, boolean vegetarisch, boolean vegan, int hoehe, int backzeit) {
+		super(nummer, name, preis, klassisch, vegan, vegetarisch);
+		this.hoehe = hoehe;
+		this.backzeit = backzeit;
+	}
+		/**switch(nummer) {
 		case 10: 
 			name = "Hamburger (Standard)";
 			preis = 0.85f;
@@ -49,8 +52,7 @@ public class Broetchen extends Zutaten {
 			vegan = false;
 			backzeit = 330;
 			hoehe = 41;
-		}
-	}
+		}*/
 	
 	/***
 	 * @return backzeit = backzeit in sec durch 60 sec um Minuten zurückzugeben
@@ -66,7 +68,7 @@ public class Broetchen extends Zutaten {
  @Override
 	public float berechneHoehe() {
 		float h;
-		h =  (float) backzeit/60 * (hoehe * 0.025f) + hoehe;
+		h =  (float) backzeit/60.0f * (hoehe * 0.025f) + hoehe;
 		return h;
 	}
 

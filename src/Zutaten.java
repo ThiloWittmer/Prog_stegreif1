@@ -15,6 +15,17 @@ public abstract class Zutaten {
 	protected boolean klassisch;
 	protected boolean vegan;
 	protected boolean vegetarisch;
+
+	
+	
+	public Zutaten(int nummer, String name, float preis, boolean klassisch, boolean vegan, boolean vegetarisch) {
+		this.nummer = nummer;
+		this.name = name;
+		this.preis = preis;
+		this.klassisch = klassisch;
+		this.vegan = vegan;
+		this.vegetarisch = vegetarisch;
+	}
 	
 	/***
 	 *die Methode zubereiten - Ausgabe jeder Zutat, wie sie zubereitet wird
@@ -55,13 +66,13 @@ public abstract class Zutaten {
 	public String getGeschmack(){
 		return "";
 	}
-	public boolean istKlassisch() {
+	public boolean isKlassisch() {
 		return klassisch;
 	}
-	public boolean istVegan() {
+	public boolean isVegan() {
 		return vegan;
 	}
-	public boolean istVegetarisch() {
+	public boolean isVegetarisch() {
 		return vegetarisch;
 	}
 }

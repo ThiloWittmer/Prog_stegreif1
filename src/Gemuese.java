@@ -10,11 +10,12 @@ public class Gemuese extends Zutaten {
      * Kunstruktor; erzeugt Gemuese basierend auf der Bestellnummer
      * @param nummer Bestellnummer des Broetchens
      */
-    public Gemuese(int nummer){
-        this.nummer = nummer;
-        vegetarisch = true;
-		vegan = true;
-		switch(nummer) {
+    public Gemuese(int nummer, String name, float preis, boolean klassisch, int scheibenDicke, int scheibenAnzahl){
+        super(nummer, name, preis, klassisch, true, true);
+        this.scheibenDicke = scheibenDicke;
+        this.scheibenAnzahl = scheibenAnzahl;
+    }
+		/**switch(nummer) {
 		case 40: 
 			name = "Tomate";
 			preis = 0.25f;
@@ -42,8 +43,7 @@ public class Gemuese extends Zutaten {
 			klassisch = false;
             scheibenDicke = 2;
             scheibenAnzahl = 5;
-        }
-    }
+        }*/
 
     /***
      * Gibt Zubereitungsanweisung aus

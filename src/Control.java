@@ -17,6 +17,8 @@ public class Control {
 		Burger[] bestellung = new Burger[10];
 		String eingabe = null;
 		Scanner sc = new Scanner(System.in);
+		final int MAX_ANZAHL = 10;
+		ZutatenManager z = new ZutatenManager();
 
 		System.out.println("You`ll never burger alone - Create your Burger");
 
@@ -24,14 +26,14 @@ public class Control {
 		while(!fertig[0]){
 
 			//Wenn die maximale Anzahl an Burgern erreicht wurde
-			if(anzahlBurger == 10){
+			if(anzahlBurger == MAX_ANZAHL){
 				System.out.println("Du hast die maximale Anzahl an Burgern von 10 erreicht.");
 				eingabe = "bestellen";
-				inputMenu(eingabe, anzahlBurger, bestellung, fertig);
+				inputMenu(eingabe, anzahlBurger, bestellung, fertig, z);
 				break;
 			}
 
-			inputCheckMenu(anzahlBurger, fertig, bestellung, sc);
+			inputCheckMenu(anzahlBurger, fertig, bestellung, sc, z);
 
 			//Solange ein Burger zusammengestellt wird
 			while(!fertig[1]){
@@ -42,15 +44,15 @@ public class Control {
 
 					eingabe = broetchenHinzufuegen(fertig, sc);
 					fertig[2] = false;
-					anzahlBurger = inputZutat(eingabe, anzahlBurger, bestellung, fertig);
-					anzahlBurger = inputZutat("ok", anzahlBurger, bestellung, fertig);
+					anzahlBurger = inputZutat(eingabe, anzahlBurger, bestellung, fertig, z);
+					anzahlBurger = inputZutat("ok", anzahlBurger, bestellung, fertig, z);
 					break;
 				}
 
 				//Wenn die maximale Anzahl an Zutaten erreicht wurde
-				if(bestellung[anzahlBurger].getAnzahlZutaten()==9){
+				if(bestellung[anzahlBurger].isFull()){
 					System.out.println("Dein Burger hat fast die maximale Anzahl an Zutaten erreicht.");
-					anzahlBurger = inputZutat("ok", anzahlBurger, bestellung, fertig);
+					anzahlBurger = inputZutat("ok", anzahlBurger, bestellung, fertig, z);
 					break;
 				}
 
@@ -58,7 +60,7 @@ public class Control {
 				while (!fertig[2]){
 					System.out.println("Bitte gib die " + (bestellung[anzahlBurger].getAnzahlZutaten()+1) + ". Zutat an:");
 					eingabe = sc.nextLine();
-					anzahlBurger = inputZutat(eingabe, anzahlBurger, bestellung, fertig);
+					anzahlBurger = inputZutat(eingabe, anzahlBurger, bestellung, fertig, z);
 				}
 				fertig[2] = false;
 			}
@@ -93,16 +95,16 @@ public class Control {
 	 * @param bestellung
 	 * @param sc
 	 */
-	private static void inputCheckMenu(int anzahlBurger, boolean[] fertig, Burger[] bestellung, Scanner sc) {
+	private static void inputCheckMenu(int anzahlBurger, boolean[] fertig, Burger[] bestellung, Scanner sc, ZutatenManager z) {
 		String eingabe;
 		//Wiederholt bis eine korrekte Eingabe getätigt wurde
 		while(!fertig[2]){
-			System.out.println("Mit \"menu\" kannst du dir alle zur Verfügung stehenden Zutaten anzeigen lassen.");
+			System.out.println("Mit \"menu\" kannst du dir alle zur Verfuegung stehenden Zutaten anzeigen lassen.");
 			System.out.println("Mit \"neuer Burger\" und einem Namen dahinter kannst du dir einen neuen Burger mit einem Namen erstellen.");
 			System.out.println("Mit \"meine burger\" kannst du dir deine bisherige Bestellung anschauen.");
 			System.out.println("Mit \"bestellen\" kannst du deine Bestellung abschliessen.");
 			eingabe = sc.nextLine();
-			inputMenu(eingabe, anzahlBurger, bestellung, fertig);
+			inputMenu(eingabe, anzahlBurger, bestellung, fertig, z);
 			if(!fertig[2]) {
 				System.out.println();
 				System.out.println("Bitte achte darauf, dass du einen der folgenden Befehle verwendest:");
@@ -118,10 +120,10 @@ public class Control {
 	 * @param anzahlBurger
 	 * @param fertig
 	 */
-	public static void inputMenu(String eingabe, int anzahlBurger, Burger[] bestellung, boolean[] fertig) {
+	public static void inputMenu(String eingabe, int anzahlBurger, Burger[] bestellung, boolean[] fertig, ZutatenManager z) {
 		//wenn "menu" eingegeben wurde
 		if(eingabe.contentEquals("menu")){
-			ZutatenManager.printMenu();
+			z.printMenu();
 			fertig[2] = true;
 		}
 
@@ -179,7 +181,7 @@ public class Control {
 		System.out.println("");
 
 		for (int i=0; i < anzahlBurger; i++) {
-			bestellung[i].printRezept(bestellung[i]);
+			bestellung[i].printRezept();
 			System.out.println("");
 			System.out.println("");
 		}
@@ -193,12 +195,12 @@ public class Control {
 	 * @param fertig
 	 * @return neuer Anzahl der Burger
 	 */
-	public static int inputZutat(String eingabe, int anzahlBurger, Burger[] bestellung, boolean[] fertig) {
+	public static int inputZutat(String eingabe, int anzahlBurger, Burger[] bestellung, boolean[] fertig, ZutatenManager z) {
 		String nummerStr;
 		//wenn eine Zutat hinzugefuegt werden soll
 		if(eingabe.startsWith("Zutat ")){
 			nummerStr = eingabe.substring(6);
-			zutatCheck(anzahlBurger, bestellung, fertig, nummerStr);
+			zutatCheck(anzahlBurger, bestellung, fertig, nummerStr, z);
 		//wenn die Zusammenstellung des aktuellen Burgers abgeschlossen werden soll	
 		} else if(eingabe.contentEquals("ok")){
 			anzahlBurger = okCheck(anzahlBurger, bestellung, fertig);
@@ -223,7 +225,7 @@ public class Control {
 			fertig[2] = true;
 			System.out.println("Dein Burger \"" + bestellung[anzahlBurger].getName() + "\" wird aufgenommen.");
 			anzahlBurger++;
-		} else System.out.println("Dein Burger braucht mindestens ein Broetchen. Bitte fue noch ein dazu.");
+		} else System.out.println("Dein Burger braucht mindestens ein Broetchen. Bitte fuege noch eins dazu.");
 		return anzahlBurger;
 	}
 
@@ -235,11 +237,11 @@ public class Control {
 	 * @param fertig
 	 * @param nummerStr String, die die Nummer enthaelt
 	 */
-	private static void zutatCheck(int anzahlBurger, Burger[] bestellung, boolean[] fertig, String nummerStr) {
+	private static void zutatCheck(int anzahlBurger, Burger[] bestellung, boolean[] fertig, String nummerStr, ZutatenManager z) {
 		int nummer;
 		try {
 			nummer = Integer.parseInt(nummerStr);
-			nummerCheck(anzahlBurger, bestellung, fertig, nummer);
+			nummerCheck(anzahlBurger, bestellung, fertig, nummer, z);
 		} catch (Exception e) {
 			System.out.println("Bitte nach \"Zutat\" eine Bestellnummer angeben:");
 		}
@@ -252,15 +254,15 @@ public class Control {
 	 * @param fertig
 	 * @param nummer
 	 */
-	private static void nummerCheck(int anzahlBurger, Burger[] bestellung, boolean[] fertig, int nummer) {
+	private static void nummerCheck(int anzahlBurger, Burger[] bestellung, boolean[] fertig, int nummer, ZutatenManager z) {
 		//Wenn nummer eine existierende Bestellnummer ist
-		if(ZutatenManager.nummerExistiert(nummer)){
+		if(z.getZutat(nummer) != null){
 			//Wenn Broetchen existiert und ein weiteres Broetchen hinzugefuegt werden soll
 			if(bestellung[anzahlBurger].istMitBroetchen() && nummer < 14){
 				System.out.println("Dein aktueller Burger hat bereits ein Broetchen.");
 				System.out.println("Bitte waehle eine andere Zutat oder fuege den Burger deiner Bestellung hinzu.");
 			}else {
-				bestellung[anzahlBurger].zutatHinzufuegen(nummer);
+				bestellung[anzahlBurger].zutatHinzufuegen(z.getZutat(nummer));
 				fertig[2] = true;
 			}
 		} else System.out.println("Bitte eine gueltige Bestellnumer angeben:");

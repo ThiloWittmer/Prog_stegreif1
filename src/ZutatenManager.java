@@ -3,29 +3,37 @@
  * es besteht die Option zu kontrollieren, ob eine Bestellnumer existiert
  */
 public class ZutatenManager {
+    private Zutaten[] alleZutaten = new Zutaten[18];
+    
+    public ZutatenManager(){
+        alleZutaten[0] = new Broetchen(10, "Hamburger (Standard)", 0.85f, true, true, false, 27, 90);
+        alleZutaten[1] = new Broetchen(11, "Hamburger Sesam", 0.95f, true, true, false, 28, 90);
+        alleZutaten[2] = new Broetchen(12, "Vegan-Broetchen", 0.55f, false, true, true, 34, 240);
+        alleZutaten[3] = new Broetchen(13, "Ciabatta", 0.45f, false, true, false, 41, 330);
+        alleZutaten[4] = new Bratling(20, "Rindfleisch (Original)", 1.85f, true, false, false, 25, 270);
+        alleZutaten[5] = new Bratling(21, "Haenchenfleisch gegrillt", 1.15f, false, false, false, 11, 180);
+        alleZutaten[6] = new Bratling(22, "Falafel-Bratling", 1.45f, false, true, true, 21, 210);
+        alleZutaten[7] = new Bratling(23, "Gemuese-Bratling", 1.75f, false, true, false, 25, 240);
+        alleZutaten[8] = new Salat(30, "Eisbergsalat", 0.18f, true);
+        alleZutaten[9] = new Salat(31, "Rucolasalat", 0.25f, false);
+        alleZutaten[10] = new Gemuese(40, "Tomate", 0.25f, true, 3, 3);
+        alleZutaten[11] = new Gemuese(41, "Salzgurke", 0.15f, true, 2, 4);
+        alleZutaten[12] = new Gemuese(42, "Rote Zwiebelringe", 0.08f, false, 2, 5);
+        alleZutaten[13] = new Gemuese(43, "Jalapeno-Ringe", 0.08f, false, 2, 5);
+        alleZutaten[14] = new Sauce(50, "Ketchup", 0.1f, true, true, true, 5, "normal");
+        alleZutaten[15] = new Sauce(51, "Sandwich-Sauce", 0.15f, true, true, false, 10, "normal");
+        alleZutaten[16] = new Sauce(52, "Chili-Sauce", 0.25f, false, true, true, 8, "scharf");
+        alleZutaten[17] = new Sauce(53, "Honig-Senf-Sauce", 0.18f, false, true, false, 8, "suess");
+    }
 
     /***
      * Methode, um neue  Zutaten zu erzeugen
      * @param nummer Bestellnummer der Zutat
-     * @return Objekt der passenden Zutat
+     * @return Objekt der passenden Zutat// null wenn keine Zutat gefunden
      */
-    public static Zutaten getZutat(int nummer) {
-        switch(nummer){
-            case 10,11,12,13: 
-                Zutaten broetchen = new Broetchen(nummer);
-                return broetchen;
-            case 20,21,22,23:
-                Zutaten bratling = new Bratling(nummer);
-                return bratling;
-            case 30,31:
-                Zutaten salat = new Salat(nummer);
-                return salat;
-            case 40,41,42,43:
-                Zutaten gemuese = new Gemuese(nummer);
-                return gemuese;
-            case 50,51,52,53:
-                Zutaten sauce = new Sauce(nummer);
-                return sauce;
+    public Zutaten getZutat(int nummer) {
+        for(Zutaten aktZutat : alleZutaten){
+            if(aktZutat.getNummer() == nummer) return aktZutat;
         }
         return null;
     }
@@ -33,43 +41,10 @@ public class ZutatenManager {
     /***
      * Beschreibung aller Zutaten werden ausgegeben
      */
-    public static void printMenu() {
-        Zutaten[] liste = new Zutaten[18];
-        for(int i=0; i<4; i++){
-            liste[i] = new Broetchen(i+10);
-        }
-        for(int i=0; i<4; i++){
-            liste[i+4] = new Bratling(i+20);
-        }
-        for(int i=0; i<2; i++){
-            liste[i+8] = new Salat(i+30);
-        }
-        for(int i=0; i<4; i++){
-            liste[i+10] = new Gemuese(i+40);
-        }
-        for(int i=0; i<4; i++){
-            liste[i+14] = new Sauce(i+50);
-        }
-        for (Zutaten aktZutat : liste) {
+    public void printMenu() {
+        for (Zutaten aktZutat : alleZutaten) {
             System.out.println(aktZutat.toString());
             System.out.println();
         }
-    }
-
-    /***
-     * Es wird kontrolliert, ob die mitgegebene Bestellnummer existiert
-     * @param nummer Bestllnummer
-     * @return true, wenn Bestellnummer existiert
-     */
-    public static boolean nummerExistiert(int nummer){
-        //Einer
-        int i = nummer%10;
-        //Zehner
-        int n = nummer/10;
-        switch(n){
-            case 1,2,4,5: if(i<4) return true;
-            case 3: if (i<2) return true;
-        }
-        return false;
     }
 }
