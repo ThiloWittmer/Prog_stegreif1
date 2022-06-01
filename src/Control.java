@@ -27,7 +27,7 @@ public class Control {
 
 			//Wenn die maximale Anzahl an Burgern erreicht wurde
 			if(anzahlBurger == MAX_ANZAHL){
-				System.out.println("Du hast die maximale Anzahl an Burgern von 10 erreicht.");
+				System.out.println("Du hast die maximale Anzahl an Burgern von " + MAX_ANZAHL + " erreicht.");
 				eingabe = "bestellen";
 				inputMenu(eingabe, anzahlBurger, bestellung, fertig, z);
 				break;
@@ -258,7 +258,7 @@ public class Control {
 		//Wenn nummer eine existierende Bestellnummer ist
 		if(z.getZutat(nummer) != null){
 			//Wenn Broetchen existiert und ein weiteres Broetchen hinzugefuegt werden soll
-			if(bestellung[anzahlBurger].istMitBroetchen() && nummer < 14){
+			if(bestellung[anzahlBurger].istMitBroetchen() && z.getZutat(nummer).getClass() == Broetchen.class){
 				System.out.println("Dein aktueller Burger hat bereits ein Broetchen.");
 				System.out.println("Bitte waehle eine andere Zutat oder fuege den Burger deiner Bestellung hinzu.");
 			}else {

@@ -10,18 +10,6 @@ public class Salat extends Zutaten {
     */
     public Salat(int nummer, String name, float preis, boolean klassisch){
         super(nummer, name, preis, klassisch, true, true);
-        
-        /**switch(nummer){
-            case 30:
-            klassisch = true;
-                name = "Eisbergsalat";
-                preis = 0.18f;
-                break;
-            case 31:
-            klassisch = false;
-                name = "Rucolasalat";
-                preis = 0.25f;
-        }*/
     }
 
     /***
