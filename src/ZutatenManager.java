@@ -1,12 +1,20 @@
+import java.util.Iterator;
+import java.util.LinkedList;
 
 /***
  * @class Hier werden alle Zutaten verwaltet, bei Bedarf neu erzeugt und
  * es besteht die Option zu kontrollieren, ob eine Bestellnumer existiert
  */
 public class ZutatenManager {
-    private Zutaten[] alleZutaten = new Zutaten[22];
+	private LinkedList<Zutaten> alleZutaten;
+    //private Zutaten[] alleZutaten = new Zutaten[22];
     
     public ZutatenManager(){
+    	alleZutaten = new LinkedList<Zutaten>();
+    	alleZutaten.add(new Broetchen(10, "Hamburger (Standard)", 0.85f, true, true, false, 27, 90));
+    	alleZutaten.add(new Broetchen(11, "Hamburger Sesam", 0.95f, true, true, false, 28, 90));
+    	
+    	/**
         alleZutaten[0] = new Broetchen(10, "Hamburger (Standard)", 0.85f, true, true, false, 27, 90);
         alleZutaten[1] = new Broetchen(11, "Hamburger Sesam", 0.95f, true, true, false, 28, 90);
         alleZutaten[2] = new Broetchen(12, "Vegan-Broetchen", 0.55f, false, true, false, 34, 240);
@@ -29,6 +37,7 @@ public class ZutatenManager {
         alleZutaten[19] = new Topping(156, "Käse Cracker", 0.59f, false, false, true, 40, Zubereitungsart.FRITTIEREN);
         alleZutaten[20] = new Topping(157, "Coleslaw Rot", 0.39f, false, true, false, 900, Zubereitungsart.KOCHEN);
         alleZutaten[21] = new Topping(158, "Pfifferlinge mit Salbei", 1.59f, false, true, false, 180, Zubereitungsart.BRATEN);
+        */
     }
 
     /***
@@ -37,8 +46,13 @@ public class ZutatenManager {
      * @return Objekt der passenden Zutat// null wenn keine Zutat gefunden
      */
     public Zutaten getZutat(int nummer) {
-        for(Zutaten aktZutat : alleZutaten){
-            if(aktZutat.getNummer() == nummer) return aktZutat;
+    	Iterator<Zutaten> zutatenIterator = alleZutaten.iterator();
+        Zutaten aktZutat;
+        while(zutatenIterator.hasNext()) {
+        	aktZutat = zutatenIterator.next();
+        	if(aktZutat.getNummer() == nummer) {
+        		return aktZutat;
+        	}
         }
         return null;
     }
