@@ -1,18 +1,20 @@
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
 
 /***
  * @class Hier werden alle Zutaten verwaltet, bei Bedarf neu erzeugt und
  * es besteht die Option zu kontrollieren, ob eine Bestellnumer existiert
  */
 public class ZutatenManager {
-	private LinkedList<Zutaten> alleZutaten;
+	private Map<Integer, Zutaten> alleZutaten;
     //private Zutaten[] alleZutaten = new Zutaten[22];
     
     public ZutatenManager(){
-    	alleZutaten = new LinkedList<Zutaten>();
-    	alleZutaten.add(new Broetchen(10, "Hamburger (Standard)", 0.85f, true, true, false, 27, 90));
-    	alleZutaten.add(new Broetchen(11, "Hamburger Sesam", 0.95f, true, true, false, 28, 90));
+    	alleZutaten = new HashMap();
+    	alleZutaten.put(10, new Broetchen(10, "Hamburger (Standard)", 0.85f, true, true, false, 27, 90));
+    	alleZutaten.put(11, new Broetchen(11, "Hamburger Sesam", 0.95f, true, true, false, 28, 90));
     	
     	/**
         alleZutaten[0] = new Broetchen(10, "Hamburger (Standard)", 0.85f, true, true, false, 27, 90);
@@ -46,24 +48,18 @@ public class ZutatenManager {
      * @return Objekt der passenden Zutat// null wenn keine Zutat gefunden
      */
     public Zutaten getZutat(int nummer) {
-    	Iterator<Zutaten> zutatenIterator = alleZutaten.iterator();
-        Zutaten aktZutat;
-        while(zutatenIterator.hasNext()) {
-        	aktZutat = zutatenIterator.next();
-        	if(aktZutat.getNummer() == nummer) {
-        		return aktZutat;
-        	}
-        }
-        return null;
+    	try {
+    		return alleZutaten.get(nummer);
+    	}
+    	catch (Exception e) {
+    		return null;  		
+    	}
     }
 
     /***
      * Beschreibung aller Zutaten werden ausgegeben
      */
     public void printMenu() {
-        for (Zutaten aktZutat : alleZutaten) {
-            System.out.println(aktZutat.toString());
-            System.out.println();
-        }
+        
     }
 }
