@@ -256,13 +256,14 @@ public class Control {
 	 */
 	private static void nummerCheck(int anzahlBurger, Burger[] bestellung, boolean[] fertig, int nummer, ZutatenManager z) {
 		//Wenn nummer eine existierende Bestellnummer ist
-		if(z.getZutat(nummer) != null){
+		Zutaten aktZutat = z.getZutat(nummer);
+		if(aktZutat != null){
 			//Wenn Broetchen existiert und ein weiteres Broetchen hinzugefuegt werden soll
 			if(bestellung[anzahlBurger].istMitBroetchen() && z.getZutat(nummer).getClass() == Broetchen.class){
 				System.out.println("Dein aktueller Burger hat bereits ein Broetchen.");
 				System.out.println("Bitte waehle eine andere Zutat oder fuege den Burger deiner Bestellung hinzu.");
 			}else {
-				bestellung[anzahlBurger].zutatHinzufuegen(z.getZutat(nummer));
+				bestellung[anzahlBurger].zutatHinzufuegen(aktZutat);
 				fertig[2] = true;
 			}
 		} else System.out.println("Bitte eine gueltige Bestellnumer angeben:");

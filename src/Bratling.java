@@ -17,43 +17,6 @@ public class Bratling extends Zutaten {
 		this.hoehe = hoehe;
 		this.bratzeit = bratzeit;
 	}
-		/**switch(nummer) {
-		case 20: 
-			name = "Rindfleisch (Original)";
-			preis = 1.85f;
-			klassisch = true;
-			vegetarisch = false;
-			vegan = false;
-			hoehe = 25;
-			bratzeit = 270;
-			break;
-		case 21: 
-			name = "Haenchenfleisch gegrillt";
-			preis = 1.15f;
-			klassisch = false;
-			vegetarisch = false;
-			vegan = false;
-			hoehe = 11;
-			bratzeit = 180;
-			break;
-		case 22: 
-			name = "Falafel-Bratling";
-			preis = 1.45f;
-			klassisch = false;
-			vegetarisch = true;
-			vegan = true;
-			hoehe = 21;
-			bratzeit = 210;
-			break;
-		case 23: 
-			name = "Gemuese-Bratling";
-			preis = 1.75f;
-			klassisch = false;
-			vegetarisch = true;
-			vegan = false;
-			hoehe = 25;
-			bratzeit = 240;
-		}*/
 
 	/***
 	 * Zubereiung berechnet Bratzeit

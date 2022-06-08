@@ -9,7 +9,7 @@ public class Salat extends Zutaten {
      * @param nummer Bestellnummer des Salats
     */
     public Salat(int nummer, String name, float preis, boolean klassisch){
-        super(nummer, name, preis, klassisch, true, true);
+        super(nummer, name, preis, klassisch, true, false);
     }
 
     /***
